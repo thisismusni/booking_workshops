@@ -16,6 +16,7 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->integer('status');
             $table->dateTime('order_date');
             $table->dateTime('expired_date');
             $table->timestamps();
