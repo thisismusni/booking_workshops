@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -48,11 +49,11 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if ($user->hasRole('leader')) {
-            return redirect()->route('admin.home');
+        if ($user->hasRole('admin')) {
+            return redirect()->route('admin.user.index');
         }
 
-        if ($user->hasRole('customer') || $user->hasRole('coach')) {
+        if ($user->hasRole('user')) {
             return redirect()->route('home');
         }
     }
