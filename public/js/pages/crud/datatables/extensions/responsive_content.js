@@ -13,7 +13,7 @@ var KTDatatablesExtensionsResponsive = (function () {
                     targets: 1,
                 },
                 {
-                    width: "200px",
+                    width: "100px",
                     targets: 2,
                 },
             ],

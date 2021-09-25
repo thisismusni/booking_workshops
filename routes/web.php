@@ -19,7 +19,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
+    // Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
 
     // User
     Route::get('/user', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.user.index');

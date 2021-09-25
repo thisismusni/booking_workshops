@@ -1,36 +1,38 @@
 <table class="table table-separate table-head-custom collapsed" id="kt_datatable">
     <thead>
         <tr>
-            <th>NO</th>
-            <th>IMAGE</th>
-            <th>USERNAME</th>
-            <th>EMAIL</th>
-            <th>ROLE</th>
-            <th>ACTION</th>
+            <th>#</th>
+            <th>image</th>
+            <th>category_id</th>
+            <th>name</th>
+            <th>price</th>
+            <th>duration</th>
+            <th>description</th>
+            <th>status</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         @php
         $no = 1;
         @endphp
-        @foreach ($data as $user)
+        @foreach ($data as $value)
         <tr>
             <td>{{ $no++}}</td>
             <td>
                 <div class="symbol symbol-50 symbol-light mr-2">
                     <span class="symbol-label">
-                        <img src="{{ $user->avatar_url ?? ''  }}" style="height: 20px;" class="h-50 align-self-center"
+                        <img src="{{ $value->image ?? ''  }}" style="height: 20px;" class="h-50 align-self-center"
                             alt="">
                     </span>
                 </div>
             </td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->email  }}</td>
-            <td>
-                @foreach(App\Models\User::find($user->id)->getRoleNames() as $role)
-                <span class="label label-outline-info label-inline mr-2">{{ $role }}</span>
-                @endforeach
-            </td>
+            <td>{{ $value->category_id }}</td>
+            <td>{{ $value->name }}</td>
+            <td>{{ $value->price  }}</td>
+            <td>{{ $value->duration  }} Minutes</td>
+            <td>{{ $value->description  }}</td>
+            <td>{{ $value->status == 1 ? 'Publish' : 'Draft' }}</td>
             <td>
                 <div class="dropdown dropdown-inline">
                     <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
@@ -39,13 +41,13 @@
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                         <ul class="nav nav-hoverable flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="{{ route('product.edit', $value->id) }}">
                                     <i class="nav-icon la la-edit"></i>
                                     <span class="nav-text">Edit</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link deleteButton" onclick="deleteFunction({{ $user->id }})">
+                                <a class="nav-link deleteButton" onclick="deleteFunction({{ $value->id }})">
                                     <i class="nav-icon la la-trash"></i>
                                     <span class="nav-text">Delete</span>
                                 </a>
@@ -59,12 +61,15 @@
     </tbody>
     <tfoot>
         <tr>
-            <th>NO</th>
-            <th>IMAGE</th>
-            <th>USERNAME</th>
-            <th>EMAIL</th>
-            <th>ROLE</th>
-            <th>ACTION</th>
+            <th>#</th>
+            <th>image</th>
+            <th>category_id</th>
+            <th>name</th>
+            <th>price</th>
+            <th>duration</th>
+            <th>description</th>
+            <th>status</th>
+            <th>Action</th>
         </tr>
     </tfoot>
 </table>

@@ -3,9 +3,8 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Slug</th>
             <th>Status</th>
-            <th>Creator</th>
+            <th>description</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -14,9 +13,8 @@
         <tr>
             <td>{{ $category->id  }}</td>
             <td>{{ $category->name  }}</td>
-            <td>{{ $category->slug  }}</td>
             <td>{{ $category->status == 1 ? 'Publish' : 'Draft' }}</td>
-            <td>{{ $category->user->name }}</td>
+            <td>{{ $category->description }}</td>
             <td>
                 <div class="dropdown dropdown-inline">
                     <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
@@ -25,20 +23,14 @@
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                         <ul class="nav nav-hoverable flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.category.edit', $category->slug) }}">
+                                <a class="nav-link" href="{{ route('category.edit', $category->id) }}">
                                     <i class="nav-icon la la-edit"></i>
-                                    <span class="nav-text">{{ trans('admin.crud.update') }}</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.category.edit', $category->slug) }}">
-                                    <i class="nav-icon la la-eye"></i>
-                                    <span class="nav-text">{{ trans('admin.crud.read') }}</span>
+                                    <span class="nav-text">Edit</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <form id="formDelete[{{ $category->id }}]" method="POST"
-                                    action="{{ route('admin.category.destroy', $category->id  ) }}">
+                                    action="{{ route('category.destroy', $category->id  ) }}">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $category->id }}">
                                 </form>
@@ -58,9 +50,8 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Slug</th>
             <th>Status</th>
-            <th>Creator</th>
+            <th>description</th>
             <th>Actions</th>
         </tr>
     </tfoot>

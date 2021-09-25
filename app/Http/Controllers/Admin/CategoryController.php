@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Arr;
 
 class CategoryController extends Controller
 {
@@ -38,7 +39,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:20|unique:categories',
+            'status' => 'required',
+            'description' => 'required',
+        ]);
+
+        $dataRecord = Arr::only($request->all(), [
+            'name',
+            'status',
+            'description',
+        ]);
+
+        Category::create($dataRecord);
+
+        return redirect('category.index');
     }
 
     /**
@@ -60,7 +75,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Category::where('id', $id)->first();
+
+        return view('admin.category.update')->with('data', $data);
     }
 
     /**
@@ -72,7 +89,23 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $request->validate([
+            'name' => "required|max:20|unique:categories,name,$id",
+            'status' => 'required',
+            'description' => 'required',
+        ]);
+
+        $dataRecord = Arr::only($request->all(), [
+            'name',
+            'status',
+            'description',
+        ]);
+
+        $category->update($dataRecord);
+
+        return redirect(route('category.index'));
     }
 
     /**
