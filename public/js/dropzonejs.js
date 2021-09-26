@@ -6,7 +6,7 @@ var KTDropzoneDemo = (function () {
     var demo1 = function () {
         // single file upload
         $("#kt_dropzone_1").dropzone({
-            url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
+            url: "http://localhost:8000/admin/product/upload", // Set the url for your upload script location
             paramName: "file", // The name that will be used to transfer the file
             maxFiles: 1,
             maxFilesize: 5, // MB
@@ -15,6 +15,7 @@ var KTDropzoneDemo = (function () {
                 if (file.name == "justinbieber.jpg") {
                     done("Naha, you don't.");
                 } else {
+                    console.log("file name", file);
                     done();
                 }
             },

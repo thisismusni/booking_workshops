@@ -45,12 +45,6 @@ class CategoryController extends Controller
             'description' => 'required',
         ]);
 
-        $dataRecord = Arr::only($request->all(), [
-            'name',
-            'status',
-            'description',
-        ]);
-
         Category::create($dataRecord);
 
         return redirect('category.index');
@@ -95,12 +89,6 @@ class CategoryController extends Controller
             'name' => "required|max:20|unique:categories,name,$id",
             'status' => 'required',
             'description' => 'required',
-        ]);
-
-        $dataRecord = Arr::only($request->all(), [
-            'name',
-            'status',
-            'description',
         ]);
 
         $category->update($dataRecord);

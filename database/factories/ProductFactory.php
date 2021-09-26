@@ -40,6 +40,7 @@ class ProductFactory extends Factory
                 ]
             ),
             'status' => $this->faker->numberBetween(0, 1),
+            'stock' => $this->faker->numberBetween(30, 100),
         ];
     }
 }

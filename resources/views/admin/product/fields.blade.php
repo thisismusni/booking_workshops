@@ -1,8 +1,7 @@
-@csrf
 <input type="hidden" name="status" id="status" value="1">
 
 <div class="form-group row">
-	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+	<div class="col-xl-8 col-lg-8 col-md-6 col-sm-12 col-12">
 		<label>Name *</label>
 		<input type="text" class="form-control  @error('name') is-invalid @enderror" placeholder="Example pliers"
 			name="name" id="name" value="{{ $data->name ?? '' }}" />
@@ -13,36 +12,17 @@
 		@enderror
 	</div>
 
-	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-		<label>Duration in Minutes*</label>
-		<input type="text" class="form-control  @error('duration') is-invalid @enderror" placeholder="Example 10"
-			name="duration" id="duration" value="{{ $data->duration ?? '' }}" />
-		@error('duration')
-		<span class="invalid-feedback" role="alert">
-			<strong>{{ $message }}</strong>
-		</span>
-		@enderror
-	</div>
-
-	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-		<label>Price *</label>
-		<input type="number" class="form-control  @error('price') is-invalid @enderror" placeholder="Example 100000"
-			name="price" id="price" value="{{ $data->price ?? '' }}" />
-
-		@error('price')
-		<span class="invalid-feedback" role="alert">
-			<strong>{{ $message }}</strong>
-		</span>
-		@enderror
-	</div>
-
-	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+	<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
 		<label>Category *</label>
 		<select class="form-control select2  @error('category_id') is-invalid @enderror" id="kt_select2_1"
 			name="category_id">
 			<option></option>
 			@foreach (App\Models\Category::all() as $item)
-			<option value="{{ $item->id }}">
+			<option @isset($data) @if ($data->category_id == $item->id)
+				{{ "selected" }}
+				@endif
+				@endisset
+				value="{{ $item->id }}">
 				{{ $item->name }}
 			</option>
 			@endforeach
@@ -55,6 +35,44 @@
 		@enderror
 	</div>
 </div>
+
+<div class="form-group row">
+	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+		<label>Stock *</label>
+		<input type="number" class="form-control  @error('name') is-invalid @enderror" placeholder="Example 100"
+			name="stock" id="stock" value="{{ $data->stock ?? '' }}" />
+		@error('stock')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+
+
+	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+		<label>Duration in Minutes*</label>
+		<input type="number" class="form-control  @error('duration') is-invalid @enderror" placeholder="Example 10"
+			name="duration" id="duration" value="{{ $data->duration ?? '' }}" />
+		@error('duration')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+
+	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+		<label>Price *</label>
+		<input type="number" class="form-control  @error('price') is-invalid @enderror" placeholder="Example 100000"
+			name="price" id="price" value="{{ $data->price ?? '' }}" />
+
+		@error('price')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
 
 
 <div class="form-group row">
@@ -72,12 +90,19 @@
 	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 		<label>Product Photo *</label>
 		<div class="col-lg-12 col-md-12 col-sm-12">
-			<div class="dropzone dropzone-default" id="kt_dropzone_1">
-				<div class="dropzone-msg dz-message needsclick">
-					<h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
-					<span class="dropzone-msg-desc">This is just a demo dropzone. Selected files are
-						<strong>not</strong>actually uploaded.</span>
-				</div>
+			<div class="image-input image-input-empty image-input-outline" id="kt_user_edit_avatar"
+				style="background-image: url({{ isset($data->image) ? $data->image : asset('media/users/blank.png') }})">
+				<div class="image-input-wrapper"></div>
+				<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+					data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+					<i class="fa fa-pen icon-sm text-muted"></i>
+					<input type="file" name="file" accept=".png, .jpg, .jpeg">
+					<input type="hidden" name="profile_avatar_remove">
+				</label>
+				<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+					data-action="cancel" data-toggle="tooltip" title="" data-original-title="Cancel avatar">
+					<i class="ki ki-bold-close icon-xs text-muted"></i>
+				</span>
 			</div>
 		</div>
 		@error('file')
@@ -109,7 +134,7 @@
 			});
 		}
 		 
-			// Public functions
+		// Public functions
 		return {
 			init: function() {
 				demos(); 
@@ -151,5 +176,4 @@
 		KTSummernoteDemo.init();
 }); 
 </script>
-<script src="{{ asset('js/dropzonejs.js') }}"></script>
 @endpush

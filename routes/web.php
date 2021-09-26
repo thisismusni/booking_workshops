@@ -29,7 +29,10 @@ Route::prefix('admin')->group(function () {
     Route::post('/user/update/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin.user.update');
     Route::get('/user/delete/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('admin.user.delete');
 
+
     Route::resource('booking', App\Http\Controllers\Admin\BookingController::class);
-    Route::resource('product', App\Http\Controllers\Admin\ProductController::class);
     Route::resource('category', App\Http\Controllers\Admin\CategoryController::class);
+
+    Route::post('/product/upload', [App\Http\Controllers\Admin\ProductController::class, 'upload'])->name('product.upload');
+    Route::resource('product', App\Http\Controllers\Admin\ProductController::class);
 });

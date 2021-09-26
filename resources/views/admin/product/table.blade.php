@@ -3,9 +3,10 @@
         <tr>
             <th>#</th>
             <th>image</th>
-            <th>category_id</th>
+            <th>category</th>
             <th>name</th>
             <th>price</th>
+            <th>stock</th>
             <th>duration</th>
             <th>description</th>
             <th>status</th>
@@ -27,9 +28,10 @@
                     </span>
                 </div>
             </td>
-            <td>{{ $value->category_id }}</td>
+            <td>{{ App\Models\Category::find( $value->category_id)->name }}</td>
             <td>{{ $value->name }}</td>
-            <td>{{ $value->price  }}</td>
+            <td>@currency($value->price)</td>
+            <td>{{ $value->stock }}</td>
             <td>{{ $value->duration  }} Minutes</td>
             <td>{{ $value->description  }}</td>
             <td>{{ $value->status == 1 ? 'Publish' : 'Draft' }}</td>
@@ -66,6 +68,7 @@
             <th>category_id</th>
             <th>name</th>
             <th>price</th>
+            <th>stock</th>
             <th>duration</th>
             <th>description</th>
             <th>status</th>

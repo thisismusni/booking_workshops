@@ -43,6 +43,7 @@ product
 
     <!--begin::Form-->
     <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data" class="form" id="kt_form">
+        @csrf
         <div class="card-body">
             @include('admin.product.fields')
         </div>

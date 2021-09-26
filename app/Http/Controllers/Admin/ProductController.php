@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Arr;
+use JD\Cloudder\Facades\Cloudder;
 
 class ProductController extends Controller
 {
@@ -15,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data = Product::all();
+        $data = Product::orderBy('created_at', 'DESC')->get();
 
         return view('admin.product.index')->with('data', $data);
     }
@@ -38,7 +40,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:20|unique:categories',
+            'category_id' => 'required|numeric',
+            'price' => 'required|numeric',
+            'duration' => 'required|numeric',
+            'description' => 'required',
+            'status' => 'required|numeric',
+        ]);
+
+        $dataRecord = $request->all();
+
+
+
+        if (!is_null($request->file('file'))) {
+            $image_name = $request->file('file')->getRealPath();;
+            Cloudder::upload($image_name, null);
+            $file = Cloudder::getResult();
+            $dataRecord['image'] =  $file['secure_url'];
+        }
+
+        Product::create($dataRecord);
+
+        return redirect(route('product.index'));
     }
 
     /**
@@ -60,7 +84,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Product::where('id', $id)->first();
+
+        return view('admin.product.update')->with('data', $data);
     }
 
     /**
@@ -72,7 +98,29 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|max:20|unique:categories',
+            'category_id' => 'required|numeric',
+            'price' => 'required|numeric',
+            'duration' => 'required|numeric',
+            'description' => 'required',
+            'status' => 'required|numeric',
+            'stock' => 'required|numeric',
+        ]);
+        $dataRecord = $request->all();
+
+        if (!is_null($request->file('file'))) {
+            $file = $request->file('file');
+            $file_name = strtotime(date("Y-m-d h:i:s")) . '.' .  $file->getClientOriginalExtension();
+            $file->move('Product', $file_name);
+            $dataRecord['image'] =  'Product/' . $file_name;
+        }
+
+        $product->update($dataRecord);
+
+        return redirect(route('product.index'));
     }
 
     /**
@@ -84,5 +132,17 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function upload(Request $request)
+    {
+        return $request->all();
     }
 }
