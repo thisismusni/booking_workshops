@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -27,7 +28,9 @@ class BookingController extends Controller
      */
     public function create()
     {
-        return view('admin.booking.create');
+        $data = Product::all();
+
+        return view('admin.booking.create')->with('data', $data);
     }
 
     /**
@@ -38,7 +41,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

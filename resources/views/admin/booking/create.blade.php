@@ -19,19 +19,20 @@ booking
 <div class="card card-custom example example-compact">
     <div class="card-header">
         <h3 class="card-title">Create booking</h3>
+        <div class="card-toolbar">
+            <a href="{{ route('booking.index') }}" class="btn btn-light-primary font-weight-bolder mr-2">
+                <i class="ki ki-long-arrow-back icon-xs"></i>Back</a>
+            <div class="btn-group">
+                <button type="button" onclick="formSubmit()" class="btn btn-primary font-weight-bolder">
+                    Save
+                </button>
+            </div>
+        </div>
     </div>
     <!--begin::Form-->
     <form action="{{ route('booking.store') }}" method="post" enctype="multipart/form-data" class="form" id="kt_form">
         <div class="card-body">
             @include('admin.booking.fields')
-        </div>
-        <div class="card-footer">
-            <div class="row">
-                <div class="col-lg-9 ml-lg-auto">
-                    <button type="submit" class="btn btn-primary mr-2">Save</button>
-                    <button type="reset" class="btn btn-light-primary">Cancel</button>
-                </div>
-            </div>
         </div>
     </form>
     <!--end::Form-->

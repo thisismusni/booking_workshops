@@ -10,18 +10,18 @@
 @endpush
 
 @push('title_page')
-product
+booking
 @endpush
 
 @section('content')
 <div class="card card-custom">
     <div class="card-header">
         <div class="card-title">
-            <h3 class="card-label">product List</h3>
+            <h3 class="card-label">booking List</h3>
         </div>
         <div class="card-toolbar">
             <!--begin::Button-->
-            <a href="{{ route('product.create') }}" class="btn btn-primary font-weight-bolder">
+            <a href="{{ route('booking.create') }}" class="btn btn-primary font-weight-bolder">
                 <i class="la la-plus"></i>
                 New Record
             </a>
@@ -30,7 +30,7 @@ product
     </div>
     <div class="card-body">
         <!--begin: Datatable-->
-        @include('admin.product.table')
+        @include('admin.booking.table')
         <!--end: Datatable-->
     </div>
 </div>

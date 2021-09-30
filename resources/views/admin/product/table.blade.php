@@ -36,6 +36,7 @@
             <td>{{ $value->description  }}</td>
             <td>{{ $value->status == 1 ? 'Publish' : 'Draft' }}</td>
             <td>
+
                 <div class="dropdown dropdown-inline">
                     <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
                         <i class="la la-cog"></i>
