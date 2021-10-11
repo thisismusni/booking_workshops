@@ -32,7 +32,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="twitter:site" content="@sejawat_id" />
     <meta name="twitter:creator" content="@sejawat_id" />
     <meta name="twitter:domain" content="https://sejawat.co.id/">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- dinamic meta --}}
     <meta name="twitter:url" content="{{ url()->full() }}">
     <meta name="twitter:title"
@@ -155,6 +155,8 @@ License: You must have a valid license purchased only from themeforest(the above
     dd(json_decode(Session::get('error')))
     @endphp --}}
     <!--end::Scrolltop-->
+
+    @include('layouts.firebase_script')
     <script>
         var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
     </script>

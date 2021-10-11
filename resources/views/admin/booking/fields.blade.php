@@ -143,6 +143,7 @@
 		let item = `
         <div class="form-group row align-items-center" id="row[${i}]">
 			<input type="hidden" value="${data.id}" name="product[${i}]">
+			<input type="hidden" value="${data.duration}" name="duration[${i}]">
             <div class="col-lg-4 col-md-4 col-sm-12 col-12 pt-2">
 				<label>Product </label>
                 <input disabled type="text" value="${data.name}" class="form-control"  />

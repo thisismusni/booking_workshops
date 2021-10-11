@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Arr;
 
@@ -45,9 +46,40 @@ class CategoryController extends Controller
             'description' => 'required',
         ]);
 
-        Category::create($dataRecord);
+        Category::create($request->all());
 
-        return redirect('category.index');
+        $firebaseToken = User::whereNotNull('device_token')->pluck('device_token')->all();
+
+        $SERVER_API_KEY = 'AAAApathYOU:APA91bHZzBQyj8EuFATUTPJqvXnrZtUKEaEanx-KwfBqTpdMf9jCeb2Ji9Q2-DlLtdoK930iU-93xApPIgWxv57PKImUWaUaFJLIyOuQSo7BRNEBnwyDuCOR0ofCYlY7Ph-yFL3EuyVf';
+
+        $data = [
+            "registration_ids" => $firebaseToken,
+            "notification" => [
+                "title" => $request->title,
+                "body" => $request->body,
+            ]
+        ];
+        $dataString = json_encode($data);
+
+        $headers = [
+            'Authorization: key=' . $SERVER_API_KEY,
+            'Content-Type: application/json',
+        ];
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
+
+        $response = curl_exec($ch);
+
+        // dd($response);
+        // return $response;
+        return redirect(route('category.index'));
     }
 
     /**

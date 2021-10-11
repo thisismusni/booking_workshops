@@ -2,10 +2,9 @@
     <thead>
         <tr>
             <th>NO</th>
-            <th>IMAGE</th>
-            <th>USERNAME</th>
-            <th>EMAIL</th>
-            <th>ROLE</th>
+            <th>User</th>
+            <th>Status</th>
+            <th>Order Date</th>
             <th>ACTION</th>
         </tr>
     </thead>
@@ -13,24 +12,22 @@
         @php
         $no = 1;
         @endphp
-        @foreach ($data as $user)
+        @foreach ($data as $booking)
         <tr>
             <td>{{ $no++}}</td>
+            <td>{{ $booking->user->email }}</td>
             <td>
-                <div class="symbol symbol-50 symbol-light mr-2">
-                    <span class="symbol-label">
-                        <img src="{{ $user->avatar_url ?? ''  }}" style="height: 20px;" class="h-50 align-self-center"
-                            alt="">
-                    </span>
-                </div>
+                @if($booking->status == 1)
+                <span class="label label-success label-inline mr-2">Book</span>
+                @elseif($booking->status == 2)
+                <span class="label label-warning label-inline mr-2">Process</span>
+                @elseif($booking->status == 3)
+                <span class="label label-info label-inline mr-2">Finished</span>
+                @else
+                <span class="label label-danger label-inline mr-2">Cancaled</span>
+                @endif
             </td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->email  }}</td>
-            <td>
-                @foreach(App\Models\User::find($user->id)->getRoleNames() as $role)
-                <span class="label label-outline-info label-inline mr-2">{{ $role }}</span>
-                @endforeach
-            </td>
+            <td>{{ $booking->order_date }}</td>
             <td>
                 <div class="dropdown dropdown-inline">
                     <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
@@ -45,7 +42,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link deleteButton" onclick="deleteFunction({{ $user->id }})">
+                                <a class="nav-link deleteButton" onclick="deleteFunction({{ $booking->id }})">
                                     <i class="nav-icon la la-trash"></i>
                                     <span class="nav-text">Delete</span>
                                 </a>
@@ -60,10 +57,9 @@
     <tfoot>
         <tr>
             <th>NO</th>
-            <th>IMAGE</th>
-            <th>USERNAME</th>
-            <th>EMAIL</th>
-            <th>ROLE</th>
+            <th>User</th>
+            <th>Status</th>
+            <th>Order Date</th>
             <th>ACTION</th>
         </tr>
     </tfoot>

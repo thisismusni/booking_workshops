@@ -10,6 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Document title -->
     <title> @stack('tap_title') {{ config('app.name', 'Laravel') }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Stylesheets & Fonts -->
     <link href="{{ asset('user-template/css/plugins.css') }}" rel="stylesheet">
     <link href="{{ asset('user-template/css/style.css') }}" rel="stylesheet">
@@ -34,6 +36,10 @@
     <!-- end: Body Inner -->
     <!-- Scroll top -->
     <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+    @auth
+
+    @include('layouts.firebase_script')
+    @endauth
     <!--Plugins-->
     <script src="{{ asset('user-template/js/jquery.js') }}"></script>
     <script src="{{ asset('user-template/js/plugins.js') }}"></script>

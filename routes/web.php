@@ -17,7 +17,12 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route::post('/save-token', [App\Http\Controllers\HomeController::class, 'saveToken'])->name('save-token');
+// Route::post('/send-notification', [App\Http\Controllers\HomeController::class, 'sendNotification'])->name('send.notification');
 
+// Route::get('/push-notificaiton', [WebNotificationController::class, 'index'])->name('push-notificaiton');
+Route::post('/store-token', [App\Http\Controllers\HomeController::class, 'saveToken'])->name('store.token');
+// Route::post('/send-web-notification', [WebNotificationController::class, 'sendWebNotification'])->name('send.web-notification');
 Route::prefix('admin')->group(function () {
     // Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
 
