@@ -50,34 +50,12 @@ class BookingController extends Controller
         ]);
 
         $dataRecord = $request->all();
+        $order_date = date_create($dataRecord['order_date']);
+        $dataRecord['order_date'] = $order_date;
+        $dataBook = Booking::where('status', '!=', '3')->where('schedule_id', $dataRecord['schedule_id'])->whereDate('order_date', $order_date)->first();
 
-        $dataRecord['order_date'] = date("Y/m/d H:i:s", strtotime($dataRecord['order_date']));
-
-        $start = $dataRecord['order_date'];
-        $end = strtotime($dataRecord['order_date']) + 60 * array_sum($dataRecord['duration']);
-        $end = date("Y/m/d H:i:s", $end);
-
-        $dataRecord['start'] = $start;
-        $dataRecord['end'] = $end;
-
-        // dd($dataRecord);
-        $dataBook = Booking::where('start', '>=', $start)
-            ->where('start', '<=', $end)
-            ->get();
-
-        $dataBook = Booking::where('end', '>=', $start)
-            ->where('end', '<=', $end)
-            ->get();
-        // $dataBook = Booking::all()->filter(function ($item) {
-        //     if (Carbon::now()->between($item->start, $item->end)) {
-        //         return $item;
-        //     }
-        // });
-
-
-        dd($dataBook);
-
-        if (count($dataBook) <= 0) {
+        // dd($dataBook);
+        if (is_null($dataBook)) {
             $book = Booking::create($dataRecord);
             foreach ($dataRecord['product'] as $product_id) {
                 $product = Product::find($product_id);
@@ -86,10 +64,13 @@ class BookingController extends Controller
                 $BookingProduct->booking_id = $book->id;
                 $BookingProduct->product_name = $product->name;
                 $BookingProduct->price = $product->price;
-                $BookingProduct->duration = $product->duration;
                 $BookingProduct->save();
             }
+        } else {
+            return back();
         }
+
+        // return "ok";
 
         return redirect(route('booking.index'));
     }

@@ -6,15 +6,15 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="INSPIRO" />
     <meta name="description" content="Themeforest Template Polo, html template">
-    <link rel="icon" type="image/png" href="{{ secure_asset('favicon2.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('favicon2.png') }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Document title -->
     <title> @stack('tap_title') {{ config('app.name', 'Laravel') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Stylesheets & Fonts -->
-    <link href="{{ secure_asset('user-template/css/plugins.css') }}" rel="stylesheet">
-    <link href="{{ secure_asset('user-template/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('user-template/css/plugins.css') }}" rel="stylesheet">
+    <link href="{{ asset('user-template/css/style.css') }}" rel="stylesheet">
     @stack('page_style')
 </head>
 
@@ -41,10 +41,10 @@
     @include('layouts.firebase_script')
     @endauth
     <!--Plugins-->
-    <script src="{{ secure_asset('user-template/js/jquery.js') }}"></script>
-    <script src="{{ secure_asset('user-template/js/plugins.js') }}"></script>
+    <script src="{{ asset('user-template/js/jquery.js') }}"></script>
+    <script src="{{ asset('user-template/js/plugins.js') }}"></script>
     <!--Template functions-->
-    <script src="{{ secure_asset('user-template/js/functions.js') }}"></script>
+    <script src="{{ asset('user-template/js/functions.js') }}"></script>
     @stack('page_script')
 
 </body>

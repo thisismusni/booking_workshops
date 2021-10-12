@@ -19,7 +19,6 @@ class CreateBookingProductsTable extends Migration
             $table->integer('product_id');
             $table->string('product_name');
             $table->integer('price');
-            $table->integer('duration');
             $table->timestamps();
         });
     }

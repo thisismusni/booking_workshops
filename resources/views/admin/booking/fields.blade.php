@@ -41,7 +41,8 @@
 	</div>
 	<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 pt-2">
 		<label>Time *</label>
-		<select class="form-control select2  @error('schedule') is-invalid @enderror" id="kt_select2_3" name="schedule">
+		<select class="form-control select2  @error('schedule') is-invalid @enderror" id="kt_select2_3"
+			name="schedule_id">
 			@foreach (App\Models\Schedule::all() as $schedule)
 			<option value="{{ $schedule->id }}">{{ $schedule->start }}-{{ $schedule->end }}</option>
 			@endforeach
@@ -80,23 +81,22 @@
 @include('admin.booking.product')
 
 @push('page_style')
-<link href="{{ secure_asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ secure_asset('plugins/custom/prismjs/prismjs.bundle.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ secure_asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ secure_asset('css/pages/wizard/wizard-4.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('plugins/custom/prismjs/prismjs.bundle.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('css/pages/wizard/wizard-4.css') }}" rel="stylesheet" type="text/css" />
 @endpush
 
 @push('page_script')
-<script src="{{ secure_asset('js/pages/custom/user/edit-user.js') }}"></script>
-<script src="{{ secure_asset('js/pages/crud/forms/validation/form-widgets.js') }}"></script>
+<script src="{{ asset('js/pages/custom/user/edit-user.js') }}"></script>
+<script src="{{ asset('js/pages/crud/forms/validation/form-widgets.js') }}"></script>
 <script>
 	let i = 0; 
 	function add(data,id) {
 		console.log(data);
 		let item = `
         <div class="form-group row align-items-center" id="row[${i}]">
-			<input type="hidden" value="${data.id}" name="product[${i}]">
-			<input type="hidden" value="${data.duration}" name="duration[${i}]">
+			<input type="hidden" value="${data.id}" name="product[${i}]"> 
             <div class="col-lg-4 col-md-4 col-sm-12 col-12 pt-2">
 				<label>Product </label>
                 <input disabled type="text" value="${data.name}" class="form-control"  />
@@ -152,7 +152,7 @@
 				placeholder: "Select Status"
 			}); 
  
-			$('#kt_datetimepicker_1').datetimepicker();
+			// $('#kt_datetimepicker_1').datetimepicker();
 			$('#kt_datepicker_1').datepicker({
 				rtl: KTUtil.isRTL(),
 				todayHighlight: true,
@@ -175,10 +175,10 @@ jQuery(document).ready(function() {
 @endpush
 
 @push('page_style')
-<link href="{{ secure_asset('plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
 @endpush
 
 @push('page_script')
-<script src="{{ secure_asset('plugins/custom/datatables/datatables.bundle.js') }}"></script>
-<script src="{{ secure_asset('js/pages/crud/datatables/extensions/responsive_content.js') }}"></script>
+<script src="{{ asset('plugins/custom/datatables/datatables.bundle.js') }}"></script>
+<script src="{{ asset('js/pages/crud/datatables/extensions/responsive_content.js') }}"></script>
 @endpush

@@ -13,6 +13,5 @@ class BookingProduct extends Model
         'product_id',
         'product_name',
         'price',
-        'duration',
     ];
 }
