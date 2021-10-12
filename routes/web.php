@@ -37,6 +37,8 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('booking', App\Http\Controllers\Admin\BookingController::class);
     Route::resource('category', App\Http\Controllers\Admin\CategoryController::class);
+    Route::resource('schedule', App\Http\Controllers\Admin\ScheduleController::class);
+
 
     Route::post('/product/upload', [App\Http\Controllers\Admin\ProductController::class, 'upload'])->name('product.upload');
     Route::resource('product', App\Http\Controllers\Admin\ProductController::class);
