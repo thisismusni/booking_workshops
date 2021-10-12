@@ -21,13 +21,13 @@
 		</span>
 		@enderror
 	</div>
-	<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 pt-2">
+	<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 pt-2">
 		<label>Order Date *</label>
-		<div class="input-group date" id="kt_datetimepicker_1" data-target-input="nearest">
+		<div class="input-group date" id="kt_datepicker_1" data-target-input="nearest">
 			<input type="text" name="order_date"
 				class="form-control datetimepicker-input @error('order_date') is-invalid @enderror"
-				placeholder="Select date & time" data-target="#kt_datetimepicker_1" />
-			<div class="input-group-append" data-target="#kt_datetimepicker_1" data-toggle="datetimepicker">
+				placeholder="Select date & time" data-target="#kt_datepicker_1" />
+			<div class="input-group-append" data-target="#kt_datepicker_1" data-toggle="datetimepicker">
 				<span class="input-group-text">
 					<i class="ki ki-calendar"></i>
 				</span>
@@ -39,7 +39,20 @@
 		</span>
 		@enderror
 	</div>
-	<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 pt-2">
+	<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 pt-2">
+		<label>Time *</label>
+		<select class="form-control select2  @error('schedule') is-invalid @enderror" id="kt_select2_3" name="schedule">
+			@foreach (App\Models\Schedule::all() as $schedule)
+			<option value="{{ $schedule->id }}">{{ $schedule->start }}-{{ $schedule->end }}</option>
+			@endforeach
+		</select>
+		@error('schedule')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+	<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-12 pt-2">
 		<label>status *</label>
 		<select class="form-control select2  @error('status') is-invalid @enderror" id="kt_select2_2" name="status">
 			<option></option>
@@ -74,7 +87,6 @@
 					<th>name</th>
 					<th>price</th>
 					<th>stock</th>
-					<th>duration</th>
 					<th>description</th>
 					<th>status</th>
 					<th>Action</th>
@@ -99,8 +111,7 @@
 					<td>{{ $value->name }}</td>
 					<td>@currency($value->price)</td>
 					<td>{{ $value->stock }}</td>
-					<td>{{ $value->duration  }} Minutes</td>
-					<td>{{ $value->description  }}</td>
+					<td>{{ $value->description }}</td>
 					<td>{{ $value->status == 1 ? 'Publish' : 'Draft' }}</td>
 					<td>
 						<a class="btn btn-primary" onclick="add({{ $value, $value->category->name }})">Add</a>
@@ -116,7 +127,6 @@
 					<th>name</th>
 					<th>price</th>
 					<th>stock</th>
-					<th>duration</th>
 					<th>description</th>
 					<th>status</th>
 					<th>Action</th>
@@ -154,12 +164,8 @@
             </div> 
 			<div class="col-lg-2 col-md-2 col-sm-12 col-12 pt-2">
 				<label>Price </label>
-                <input disabled type="number" value="${data.price}" class="form-control"  />
-            </div> 
-            <div class="col-lg-2 col-md-2 col-sm-6 col-6 pt-2">
-				<label>Duration in Minutes</label>
-                <input disabled type="number" value="${data.duration}" class="form-control"  />
-            </div> 
+                <input disabled type="text" value="${data.price}" class="form-control"  />
+            </div>  
             <div class="col-lg-2 col-md-2 col-sm-6 col-6 pt-2">   
                 <a href="javascript:;" onclick="deleteBtn(${i})" class="btn btn-sm font-weight-bolder btn-light-danger mt-7">
                     <i class="la la-trash-o"></i>Delete
@@ -195,11 +201,20 @@
 				placeholder: "Select Status"
 			}); 
 
+			$('#kt_select2_3').select2({
+				placeholder: "Select Time"
+			}); 
+
 			$('#kt_select2_103').select2({
 				placeholder: "Select Status"
 			}); 
  
 			$('#kt_datetimepicker_1').datetimepicker();
+			$('#kt_datepicker_1').datepicker({
+				rtl: KTUtil.isRTL(),
+				todayHighlight: true,
+				orientation: "bottom left", 
+			});
 		}
 		 
 		// Public functions

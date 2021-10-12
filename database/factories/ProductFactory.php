@@ -27,7 +27,6 @@ class ProductFactory extends Factory
             'category_id' => Category::all()->random()->id,
             'name' => $this->faker->text(20),
             'price' => $this->faker->numberBetween(20000, 4000000),
-            'duration' => $this->faker->numberBetween(30, 180),
             'description' => $this->faker->text(100),
             'image' => $this->faker->randomElement(
                 [

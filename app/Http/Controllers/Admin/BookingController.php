@@ -30,7 +30,7 @@ class BookingController extends Controller
      */
     public function create()
     {
-        $data = Product::all();
+        $data = Product::where('status', 1)->get();
 
         return view('admin.booking.create')->with('data', $data);
     }
