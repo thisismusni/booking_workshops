@@ -1,11 +1,11 @@
 @extends('layouts.user.app')
 
 @push('page_style')
-<link href='{{ secure_asset(' user-template/plugins/fullcalendar/fullcalendar.min.css') }}' rel='stylesheet' />
+<link href="{{ secure_asset(' user-template/plugins/fullcalendar/fullcalendar.min.css' ) }}" rel='stylesheet' />
 @endpush
 
 @section('content')
-<section class="fullscreen" data-bg-parallax="{{ secure_asset('user-template/images/parallax/14.jpg') }}">
+<section class=" fullscreen" data-bg-parallax="{{ secure_asset('user-template/images/parallax/14.jpg') }}">
     <div class="bg-overlay"></div>
     <div class="shape-divider" data-style="1" data-height="300"></div>
     <div class="container">
