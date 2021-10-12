@@ -52,8 +52,10 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta property="og:image"
         content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
 
-    {{-- <meta name="description" --}}
-    {{-- content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." /> --}}
+    {{--
+    <meta name="description" --}} {{--
+        content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
+    --}}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
     <!--begin::Fonts-->
@@ -62,18 +64,19 @@ License: You must have a valid license purchased only from themeforest(the above
     {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 
     <!--begin::Page Vendors Styles(used by this page)-->
-    <link href="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.css') }} " rel="stylesheet" type="text/css" />
+    <link href="{{ secure_asset('plugins/custom/fullcalendar/fullcalendar.bundle.css') }} " rel="stylesheet"
+        type="text/css" />
     <!--end::Page Vendors Styles-->
     <!--begin::Global Theme Styles(used by all pages)-->
-    <link href="{{ asset('plugins/global/plugins.bundle.css') }} " rel="stylesheet" type="text/css" />
-    <link href="{{ asset('plugins/custom/prismjs/prismjs.bundle.css') }} " rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/style.bundle.css') }} " rel="stylesheet" type="text/css" />
+    <link href="{{ secure_asset('plugins/global/plugins.bundle.css') }} " rel="stylesheet" type="text/css" />
+    <link href="{{ secure_asset('plugins/custom/prismjs/prismjs.bundle.css') }} " rel="stylesheet" type="text/css" />
+    <link href="{{ secure_asset('css/style.bundle.css') }} " rel="stylesheet" type="text/css" />
     <!--end::Global Theme Styles-->
     <!--begin::Layout Themes(used by all pages)-->
-    <link href="{{ asset('css/themes/layout/header/base/light.css') }} " rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/themes/layout/header/menu/light.css') }} " rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/themes/layout/brand/light.css') }} " rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/themes/layout/aside/light.css') }} " rel="stylesheet" type="text/css" />
+    <link href="{{ secure_asset('css/themes/layout/header/base/light.css') }} " rel="stylesheet" type="text/css" />
+    <link href="{{ secure_asset('css/themes/layout/header/menu/light.css') }} " rel="stylesheet" type="text/css" />
+    <link href="{{ secure_asset('css/themes/layout/brand/light.css') }} " rel="stylesheet" type="text/css" />
+    <link href="{{ secure_asset('css/themes/layout/aside/light.css') }} " rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
     <link rel="icon" href="https://sejawat.co.id/images/sejawat-logo-mobile.png">
     <link rel="icon" sizes="48x48" href="https://sejawat.co.id/images/sejawat-logo-mobile.png">
@@ -166,18 +169,18 @@ License: You must have a valid license purchased only from themeforest(the above
     </script>
     <!--end::Global Config-->
     <!--begin::Global Theme Bundle(used by all pages)-->
-    <script src="{{ asset('plugins/global/plugins.bundle.js')}}"></script>
-    <script src="{{ asset('plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
-    <script src="{{ asset('js/scripts.bundle.js')}}"></script>
+    <script src="{{ secure_asset('plugins/global/plugins.bundle.js')}}"></script>
+    <script src="{{ secure_asset('plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
+    <script src="{{ secure_asset('js/scripts.bundle.js')}}"></script>
     <!--end::Global Theme Bundle-->
     <!--begin::Page Vendors(used by this page)-->
-    <script src="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"></script>
+    <script src="{{ secure_asset('plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"></script>
     <!--end::Page Vendors-->
     <!--begin::Page Scripts(used by this page)-->
-    <script src="{{ asset('js/pages/widgets.js')}}"></script>
+    <script src="{{ secure_asset('js/pages/widgets.js')}}"></script>
     <!--end::Page Scripts-->
     @stack('page_script')
-    <script src="{{ asset('js/pages/features/miscellaneous/sweetalert2.js') }}"></script>
+    <script src="{{ secure_asset('js/pages/features/miscellaneous/sweetalert2.js') }}"></script>
     @if ($message = Session::get('sukses'))
     <script>
         Swal.fire({
