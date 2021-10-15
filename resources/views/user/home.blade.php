@@ -13,7 +13,7 @@
             <div class="heading-text text-light col-lg-12">
                 <p>Polo is jam packed with tons of features that will give you the power to create the web
                     as you always wanted.</p>
-                <a href="#" class="btn btn-light btn-rounded btn-lg">Book now</a>
+                <a href="{{ route('book') }}" class="btn btn-light btn-rounded btn-lg">Book now</a>
             </div>
         </div>
     </div>

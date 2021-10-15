@@ -43,7 +43,7 @@
                                 </span>
                             </span>
                             <span class="navi-text text-muted text-hover-primary" style="font-size: 11px">
-                                {{-- {{ Auth::user()->email }} --}}
+                                {{ Auth::user()->email }}
                             </span>
                         </span>
                     </a>

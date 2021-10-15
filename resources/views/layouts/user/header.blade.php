@@ -12,7 +12,7 @@
                     <span class="logo-default" style="padding-bottom: 10px">
                         {{ config('app.name', 'Laravel') }}
                     </span>
-                    <span class="logo-dark">
+                    <span class="logo-dark" style="padding-bottom: 10px">
                         {{ config('app.name', 'Laravel') }}
                     </span>
                 </a>

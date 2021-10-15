@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
+use App\Models\Product;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,6 +28,45 @@ class HomeController extends Controller
     {
         return view('user.home');
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function book()
+    {
+        $bookings = Booking::select('schedule_id')->where('order_date', date("Y-m-d"))->get();
+        $booked = array();
+        foreach ($bookings as $booking) {
+            array_push($booked, $booking->schedule_id);
+        }
+        $schedules = Schedule::whereNotIn('id', $booked)->get();
+
+        $products = Product::orderBy('created_at', 'DESC')->get();
+
+        return view('user.book')->with('schedules', $schedules)->with('products', $products);
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function schedule($date)
+    {
+
+        $bookings = Booking::select('schedule_id')->where('order_date', $date)->get();
+        $booked = array();
+        foreach ($bookings as $booking) {
+            array_push($booked, $booking->schedule_id);
+        }
+        $schedules = Schedule::whereNotIn('id', $booked)->get();
+
+        return $schedules;
+    }
+
+
 
     /** 
      * Write code on Method
