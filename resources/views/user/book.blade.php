@@ -12,16 +12,17 @@
                         <h3>Chose Date, Time And Parts if you need</h3>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="{{ route('book.store') }}">
+                            @csrf
                             <div class="form-group row">
                                 <div class="col-4">
                                     <label for="example-date-input" class="col-form-label text-right">Date</label>
-                                    <input class="form-control" onchange="dateChange()" type="date" value="2021-10-11"
-                                        id="example-date-input">
+                                    <input class="form-control" onchange="dateChange()" type="date" name="order_date"
+                                        value="2021-10-11" id="example-date-input">
                                 </div>
                                 <div class="col-4" id="selectTime">
                                     <label for="example-date-input" class="col-form-label text-right">Time</label>
-                                    <select id="inputState" name="time" class="form-control">
+                                    <select id="inputState" name="schedule_id" class="form-control">
                                         <option> Choose Time </option>
                                         @foreach ($schedules as $schedule)
                                         <option value="{{ $schedule->id }}">
@@ -31,6 +32,8 @@
                                     </select>
                                 </div>
                                 <div class="col-4">
+                                    <br>
+                                    <input type="submit" value="Book" class="btn btn-primary" style="margin-top: 13px">
                                 </div>
                             </div>
                             <div id="item">

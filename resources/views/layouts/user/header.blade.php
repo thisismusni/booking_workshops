@@ -9,11 +9,11 @@
             <!--Logo-->
             <div id="logo">
                 <a href="{{ route('home') }}">
-                    <span class="logo-default" style="padding-bottom: 10px">
-                        {{ config('app.name', 'Laravel') }}
+                    <span class="logo-default">
+                        <img height="70" src="{{ asset('BW.png') }}" alt="">
                     </span>
-                    <span class="logo-dark" style="padding-bottom: 10px">
-                        {{ config('app.name', 'Laravel') }}
+                    <span class="logo-dark">
+                        <img height="70" src="{{ asset('BW.png') }}" alt="">
                     </span>
                 </a>
             </div>
@@ -83,7 +83,39 @@
                             <li><button href="#modalLogin" data-lightbox="inline"
                                     class="btn btn-rounded btn-modal">LOGIN</button></li>
                             @else
-                            <li><a href=""></a>{{ auth()->user()->name }}</a></li>
+                            <div class="p-dropdown">
+                                <a class="text-center"> {{ auth()->user()->name }}
+                                </a>
+                                <div class="p-dropdown-content">
+                                    <div class="widget-myaccount">
+                                        <ul class="text-left">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="icon-user"></i>
+                                                    Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="icon-clock"></i>
+                                                    Activity logs
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="btn btn-sm btn-danger font-weight-bolder"
+                                                    href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                                    @csrf
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                             @endguest
                         </ul>
                     </nav>
