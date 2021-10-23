@@ -54,7 +54,7 @@ class LoginController extends Controller
         }
 
         if ($user->hasRole('user')) {
-            return redirect()->route('home');
+            return redirect()->route('user.home');
         }
     }
 }

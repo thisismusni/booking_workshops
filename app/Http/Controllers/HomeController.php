@@ -45,7 +45,7 @@ class HomeController extends Controller
 
         $products = Product::orderBy('created_at', 'DESC')->get();
 
-        return view('user.book')->with('schedules', $schedules)->with('products', $products);
+        return view('user.book.create')->with('schedules', $schedules)->with('products', $products);
     }
 
     /**

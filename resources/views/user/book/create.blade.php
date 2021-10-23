@@ -39,7 +39,7 @@
                             <div id="item">
                             </div>
                         </form>
-                        @include('user.product')
+                        @include('user.book.product')
                     </div>
                 </div>
             </div>

@@ -16,9 +16,18 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/book', [App\Http\Controllers\HomeController::class, 'book'])->name('book');
 Route::get('/schedule/{date}', [App\Http\Controllers\HomeController::class, 'schedule'])->name('schedule');
-Route::post('/book', [App\Http\Controllers\BookingController::class, 'store'])->name('book.store');
+
+Route::group(['middleware' => ['role:user', 'auth'], 'prefix' => 'account'], function () {
+    Route::get('/book', [App\Http\Controllers\HomeController::class, 'book'])->name('book');
+    Route::get('/book/{id}', [App\Http\Controllers\user\BookingController::class, 'show'])->name('book.show');
+    Route::post('/book', [App\Http\Controllers\BookingController::class, 'store'])->name('book.store');
+
+    Route::get('/profile', [App\Http\Controllers\HomeController::class, 'book'])->name('profile');
+    Route::get('/', [App\Http\Controllers\user\HomeController::class, 'index'])->name('user.home');
+    Route::get('/history', [App\Http\Controllers\user\BookingController::class, 'index'])->name('user.history');
+    Route::get('/product', [App\Http\Controllers\user\ProductController::class, 'index'])->name('user.product');
+});
 
 // Route::post('/save-token', [App\Http\Controllers\HomeController::class, 'saveToken'])->name('save-token');
 // Route::post('/send-notification', [App\Http\Controllers\HomeController::class, 'sendNotification'])->name('send.notification');
