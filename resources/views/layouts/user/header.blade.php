@@ -1,6 +1,6 @@
 <header id="header" data-transparent="true" data-fullwidth="false" class="
-@if(Request::is('/*')  || Request::is('cooperation*')) 
-{{ 'dark submenu-light' }} 
+@if(Request::is('/*')) 
+{{ 'dark submenu-light' }} shadow
 @else  
 {{ 'light' }} shadow
 @endif ">
