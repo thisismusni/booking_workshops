@@ -10,10 +10,14 @@
             <div id="logo">
                 <a href="{{ route('home') }}">
                     <span class="logo-default">
-                        <img height="70" src="{{ asset('BW.png') }}" alt="">
+                        <h6>
+                            Marannu
+                        </h6>
                     </span>
                     <span class="logo-dark">
-                        <img height="70" src="{{ asset('BW.png') }}" alt="">
+                        <h6>
+                            Marannu
+                        </h6>
                     </span>
                 </a>
             </div>
