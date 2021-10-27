@@ -1,23 +1,14 @@
-<header id="header" data-transparent="true" data-fullwidth="false" class="
-@if(Request::is('/*')) 
-{{ 'dark submenu-light' }} shadow
-@else  
-{{ 'light' }} shadow
-@endif ">
+<header id="header" data-transparent="true" data-fullwidth="false" class="light shadow">
     <div class="header-inner">
         <div class="container">
             <!--Logo-->
             <div id="logo">
                 <a href="{{ route('home') }}">
                     <span class="logo-default">
-                        <h6>
-                            Marannu
-                        </h6>
+                        <img height="90" src="{{ asset('BW.png') }}">
                     </span>
                     <span class="logo-dark">
-                        <h6>
-                            Marannu
-                        </h6>
+                        <img height="90" src="{{ asset('BW.png') }}">
                     </span>
                 </a>
             </div>
@@ -31,12 +22,12 @@
                     </div>
                     <div class="col-md-6">
                         <div class="p-40 p-t-60 p-xs-20">
-                            <h3>Sign up or Login</h3>
+                            <h3>Silakan login</h3>
                             <form class="form-grey-fields" method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label class="sr-only">Username or Email</label>
-                                    <input placeholder="Username or Email" name="email" value="{{ old('email') }}"
+                                    <label class="sr-only">Email</label>
+                                    <input placeholder="Email" name="email" value="{{ old('email') }}"
                                         class="form-control @error('email') is-invalid @enderror" type="text">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -55,17 +46,19 @@
                                     </span>
                                     @enderror
                                 </div>
-                                <div class="form-group form-inline text-left m-b-10 ">
+                                {{-- <div class="form-group form-inline text-left m-b-10 ">
                                     <a class="right" href="resetpassword.html">
                                         <p><small>Lost your Password? Reset</small></p>
                                     </a>
-                                </div>
-                                <div class="text-left form-group">
-                                    <button type="submit" class="btn btn-rounded" type="button">Login</button>
+                                </div> --}}
+                                <div class="text-left form-group mt-3">
+                                    <button type="submit" class="btn btn-rounded btn-primary mt-3"
+                                        type="button">Login</button>
                                 </div>
                             </form>
-                            <p class="text-left">Don't have an account yet? <a href="register.html">Register New
-                                    Account</a>
+                            <p class="text-left">
+                                Lupa password? <a href="{{ route('password.request') }}">Reset di sini!</a><br>
+                                Belum punya akun? <a href="{{ route('register') }}">Daftar sekarang!</a>
                             </p>
                         </div>
                     </div>
@@ -75,51 +68,27 @@
 
             <!--Navigation Resposnive Trigger-->
             <div id="mainMenu-trigger">
-                <a class="lines-button x"><span class="lines"></span></a>
+                <a class="lines-button x"><span class="lines" style="color: black"></span></a>
             </div>
             <!--end: Navigation Resposnive Trigger-->
+
             <!--Navigation-->
             <div id="mainMenu">
                 <div class="container">
                     <nav>
-                        <ul>
+                        <ul class="text-center sm-m-t-50">
                             @guest
-                            <li><button href="#modalLogin" data-lightbox="inline"
-                                    class="btn btn-rounded btn-modal">LOGIN</button></li>
+                            <li>
+                                <button href="#modalLogin" data-lightbox="inline"
+                                    class="btn btn-rounded btn-primary btn-modal">LOGIN</button>
+                            </li>
                             @else
-                            <div class="p-dropdown">
-                                <a class="text-center"> {{ auth()->user()->name }}
+                            <li>
+                                <a href="" class=" btn btn-rounded btn-danger text-center"
+                                    style="color: white; font-weight: 600;font-size: 14px;">
+                                    Logout
                                 </a>
-                                <div class="p-dropdown-content">
-                                    <div class="widget-myaccount">
-                                        <ul class="text-left">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="icon-user"></i>
-                                                    Profile
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="icon-clock"></i>
-                                                    Activity logs
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="btn btn-sm btn-danger font-weight-bolder"
-                                                    href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
-                                                </a>
-
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                                    @csrf
-                                                </form>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            </li>
                             @endguest
                         </ul>
                     </nav>
