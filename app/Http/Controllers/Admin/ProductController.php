@@ -44,7 +44,7 @@ class ProductController extends Controller
             'name' => 'required|max:20|unique:categories',
             'category_id' => 'required|numeric',
             'price' => 'required|numeric',
-            'duration' => 'required|numeric',
+            // 'duration' => 'required|numeric',
             'description' => 'required',
             'status' => 'required|numeric',
         ]);

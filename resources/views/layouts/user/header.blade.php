@@ -85,9 +85,13 @@
                             @else
                             <li>
                                 <a href="" class=" btn btn-rounded btn-danger text-center"
-                                    style="color: white; font-weight: 600;font-size: 14px;">
-                                    Logout
+                                    style="color: white; font-weight: 600;font-size: 14px;"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Log out
                                 </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                </form>
                             </li>
                             @endguest
                         </ul>

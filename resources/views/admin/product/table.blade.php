@@ -7,7 +7,7 @@
             <th>name</th>
             <th>price</th>
             <th>stock</th>
-            <th>duration</th>
+            {{-- <th>duration</th> --}}
             <th>description</th>
             <th>status</th>
             <th>Action</th>
@@ -32,8 +32,8 @@
             <td>{{ $value->name }}</td>
             <td>@currency($value->price)</td>
             <td>{{ $value->stock }}</td>
-            <td>{{ $value->duration  }} Minutes</td>
-            <td>{{ $value->description  }}</td>
+            {{-- <td>{{ $value->duration }} Minutes</td> --}}
+            <td>{{ $value->description }}</td>
             <td>{{ $value->status == 1 ? 'Publish' : 'Draft' }}</td>
             <td>
 
@@ -70,7 +70,7 @@
             <th>name</th>
             <th>price</th>
             <th>stock</th>
-            <th>duration</th>
+            {{-- <th>duration</th> --}}
             <th>description</th>
             <th>status</th>
             <th>Action</th>

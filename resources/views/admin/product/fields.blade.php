@@ -48,18 +48,6 @@
 		@enderror
 	</div>
 
-
-	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-		<label>Duration in Minutes*</label>
-		<input type="number" class="form-control  @error('duration') is-invalid @enderror" placeholder="Example 10"
-			name="duration" id="duration" value="{{ $data->duration ?? '' }}" />
-		@error('duration')
-		<span class="invalid-feedback" role="alert">
-			<strong>{{ $message }}</strong>
-		</span>
-		@enderror
-	</div>
-
 	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 		<label>Price *</label>
 		<input type="number" class="form-control  @error('price') is-invalid @enderror" placeholder="Example 100000"
