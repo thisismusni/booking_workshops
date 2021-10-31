@@ -50,6 +50,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+
+                                <form id="formDelete[{{ $value->id }}]" method="post"
+                                    action="{{ route('product.destroy', $value->id) }}">
+                                    @method("DELETE")
+                                    @csrf
+                                </form>
                                 <a class="nav-link deleteButton" onclick="deleteFunction({{ $value->id }})">
                                     <i class="nav-icon la la-trash"></i>
                                     <span class="nav-text">Delete</span>
