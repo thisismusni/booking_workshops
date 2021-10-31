@@ -99,12 +99,12 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-
+        // dd($request->all());
         $request->validate([
             'name' => 'required|max:20|unique:categories',
             'category_id' => 'required|numeric',
             'price' => 'required|numeric',
-            'duration' => 'required|numeric',
+            // 'duration' => 'required|numeric',
             'description' => 'required',
             'status' => 'required|numeric',
             'stock' => 'required|numeric',
