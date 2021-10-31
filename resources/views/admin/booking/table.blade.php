@@ -42,6 +42,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <form id="formDelete[{{ $booking->id }}]" method="post"
+                                    action="{{ route('booking.destroy', $booking->id) }}">
+                                    @method("DELETE")
+                                    @csrf
+                                </form>
                                 <a class="nav-link deleteButton" onclick="deleteFunction({{ $booking->id }})">
                                     <i class="nav-icon la la-trash"></i>
                                     <span class="nav-text">Delete</span>
