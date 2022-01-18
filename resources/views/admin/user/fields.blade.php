@@ -46,14 +46,17 @@
     <label class="col-form-label col-lg-3 col-sm-3 col-3 text-right">Role *</label>
     <div class="col-lg-9 col-md-9 col-sm-9 col-9">
         <div class="input-group">
-            <select class="form-control select2 col-9" id="kt_select2_102" name="role[]" multiple="multiple">
+            <select class="form-control select2 col-9" id="kt_select2_102" name="role">
                 <option></option>
                 @foreach (App\Models\Role::all() as $item)
-                <option @php if (isset($data)) { foreach(App\Models\User::find($data->id)->getRoleNames() as $role) { if
-                    ($role == $item->name){ echo "selected"; }}} @endphp
+                @if($item->name == "user")
+                <option @php if (isset($data)) { foreach(App\Models\User::find($data->id)->getRoleNames() as $role)
+                    { if ($role == $item->name)
+                    { echo "selected"; }}} @endphp
                     value="{{ $item->id }}">
                     {{ $item->name }}
                 </option>
+                @endif
                 @endforeach
             </select>
             <span class="form-text text-muted"></span>

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Pimpinan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class HomeController extends Controller
+class PimpinanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view("admin.user.index");
+        $data = User::orderBy('id', 'desc')->get();
+
+        return view('pimpinan.index', compact('data'));
     }
 
     /**
@@ -24,7 +27,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('pimpinan.createAdmin');
     }
 
     /**
@@ -35,7 +38,23 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+
+        if($data['role'] == 2){
+            $user->assignRole('user');
+        }elseif($data['role'] == 1){
+            $user->assignRole('admin');
+        }elseif($data['role'] == 3){
+            $user->assignRole('Pimpinan');
+        }
+
+        return redirect(route('pimpinan.home'));
     }
 
     /**
@@ -57,7 +76,9 @@ class HomeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = User::where('id', $id)->first();
+
+        return view('pimpinan.updateAdmin')->with('data', $data);
     }
 
     /**
@@ -69,7 +90,17 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = User::find($id);
+        // $data = $request->all();
+        // dd($data);
+        
+        $data->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
+
+        return redirect(route('pimpinan.home'));
     }
 
     /**
@@ -80,6 +111,8 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+
+        return redirect(route('pimpinan.home'));
     }
 }

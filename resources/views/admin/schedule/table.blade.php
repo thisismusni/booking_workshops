@@ -34,12 +34,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <form id="formDelete[{{ $schedule->id }}]" method="POST"
+                                {{-- <form id="formDelete[{{ $schedule->id }}]" method="GET"
                                     action="{{ route('schedule.destroy', $schedule->id  ) }}">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $schedule->id }}">
-                                </form>
-                                <a class="nav-link deleteButton" onclick="deleteFunction({{ $schedule->id }})">
+                                </form> --}}
+                                <a href="/admin/schedule/delete/{{ $schedule->id }}" class="nav-link deleteButton"
+                                    onclick="deleteFunction({{ $schedule->id }})">
                                     <i class="nav-icon la la-trash"></i>
                                     <span class="nav-text">Delete</span>
                                 </a>

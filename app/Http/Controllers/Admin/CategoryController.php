@@ -123,7 +123,7 @@ class CategoryController extends Controller
             'description' => 'required',
         ]);
 
-        $category->update($dataRecord);
+        $category->update($request->all());
 
         return redirect(route('category.index'));
     }
@@ -136,6 +136,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::find($id)->delete();
+
+        return redirect(route('category.index'));
     }
 }

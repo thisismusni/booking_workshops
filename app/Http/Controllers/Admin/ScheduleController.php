@@ -95,6 +95,8 @@ class ScheduleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Schedule::find($id)->delete();
+
+        return redirect(route('schedule.index'));
     }
 }

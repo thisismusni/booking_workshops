@@ -39,19 +39,24 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+
+        $input['schedule_id'] = $input['time'];
         $input['user_id'] = Auth::user()->id;
         $input['status'] = 1;
 
         $book = Booking::create($input);
-        foreach ($input['product'] as $product_id) {
-            $product = Product::find($product_id);
-            $BookingProduct = new BookingProduct;
-            $BookingProduct->product_id = $product->id;
-            $BookingProduct->booking_id = $book->id;
-            $BookingProduct->product_name = $product->name;
-            $BookingProduct->price = $product->price;
-            $BookingProduct->save();
+        if (isset($input['product'])) {
+            foreach ($input['product'] as $product_id) {
+                $product = Product::find($product_id);
+                $BookingProduct = new BookingProduct;
+                $BookingProduct->product_id = $product->id;
+                $BookingProduct->booking_id = $book->id;
+                $BookingProduct->product_name = $product->name;
+                $BookingProduct->price = $product->price;
+                $BookingProduct->save();
+            }
         }
+
 
         return redirect(route('home'));
     }

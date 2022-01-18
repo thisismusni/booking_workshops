@@ -5,6 +5,7 @@
             <th>User</th>
             <th>Status</th>
             <th>Order Date</th>
+            <th>Schedule</th>
             <th>ACTION</th>
         </tr>
     </thead>
@@ -27,7 +28,11 @@
                 <span class="label label-danger label-inline mr-2">Cancaled</span>
                 @endif
             </td>
-            <td>{{ $booking->order_date }}</td>
+            <td>{{ date('Y-m-d', strtotime($booking->order_date)) }}</td>
+            <td>
+                {{ App\Models\Schedule::find($booking->schedule_id)->start .' - '.
+                App\Models\Schedule::find($booking->schedule_id)->end }}
+            </td>
             <td>
                 <div class="dropdown dropdown-inline">
                     <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
@@ -42,7 +47,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link deleteButton" onclick="deleteFunction({{ $booking->id }})">
+                                <a href="/admin/booking/delete/{{ $booking->id }}" class="nav-link deleteButton"
+                                    onclick="deleteFunction({{ $booking->id }})">
                                     <i class="nav-icon la la-trash"></i>
                                     <span class="nav-text">Delete</span>
                                 </a>
@@ -60,6 +66,7 @@
             <th>User</th>
             <th>Status</th>
             <th>Order Date</th>
+            <th>Schedule</th>
             <th>ACTION</th>
         </tr>
     </tfoot>

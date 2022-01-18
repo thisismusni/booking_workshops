@@ -14,6 +14,8 @@
         $no = 1;
         @endphp
         @foreach ($data as $user)
+        @foreach(App\Models\User::find($user->id)->getRoleNames() as $role)
+        @if($role == "user")
         <tr>
             <td>{{ $no++}}</td>
             <td>
@@ -25,11 +27,11 @@
                 </div>
             </td>
             <td>{{ $user->name }}</td>
-            <td>{{ $user->email  }}</td>
+            <td>{{ $user->email }}</td>
             <td>
-                @foreach(App\Models\User::find($user->id)->getRoleNames() as $role)
+                {{-- @foreach(App\Models\User::find($user->id)->getRoleNames() as $role) --}}
                 <span class="label label-outline-info label-inline mr-2">{{ $role }}</span>
-                @endforeach
+                {{-- @endforeach --}}
             </td>
             <td>
                 <div class="dropdown dropdown-inline">
@@ -39,13 +41,14 @@
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                         <ul class="nav nav-hoverable flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="/admin/user/edit/{{ $user->id }}">
                                     <i class="nav-icon la la-edit"></i>
                                     <span class="nav-text">Edit</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link deleteButton" onclick="deleteFunction({{ $user->id }})">
+                                <a href="/admin/user/delete/{{ $user->id }}" class="nav-link deleteButton"
+                                    onclick="deleteFunction({{ $user->id }})">
                                     <i class="nav-icon la la-trash"></i>
                                     <span class="nav-text">Delete</span>
                                 </a>
@@ -55,6 +58,8 @@
                 </div>
             </td>
         </tr>
+        @endif
+        @endforeach
         @endforeach
     </tbody>
     <tfoot>

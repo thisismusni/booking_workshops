@@ -21,7 +21,7 @@ User
         </div>
         <div class="card-toolbar">
             <!--begin::Button-->
-            <a href="" class="btn btn-primary font-weight-bolder">
+            <a href="{{ route('admin.user.create') }}" class="btn btn-primary font-weight-bolder">
                 <i class="la la-plus"></i>
                 New Record
             </a>

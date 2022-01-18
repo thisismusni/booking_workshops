@@ -3,14 +3,15 @@
         <div class="container">
             <!--Logo-->
             <div id="logo">
-                <a href="{{ route('home') }}">
-                    <span class="logo-default">
-                        <img height="90" src="{{ asset('BW.png') }}">
-                    </span>
-                    <span class="logo-dark">
-                        <img height="90" src="{{ asset('BW.png') }}">
-                    </span>
-                </a>
+                {{-- <a href="{{ route('home') }}"> --}}
+                    <a onclick="Javascript:history.back()">
+                        <span class="logo-default">
+                            <img height="90" src="{{ asset('BW.png') }}">
+                        </span>
+                        <span class="logo-dark">
+                            <img height="90" src="{{ asset('BW.png') }}">
+                        </span>
+                    </a>
             </div>
             <!--End: Logo-->
 

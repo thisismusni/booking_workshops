@@ -19,7 +19,7 @@ class BookingController extends Controller
     public function index()
     {
         $data = Booking::orderBy('updated_at', 'DESC')->get();
-
+        // dd($data);
         return view('admin.booking.index')->with('data', $data);
     }
 
@@ -94,7 +94,9 @@ class BookingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Bookings::where('id', $id)->first();
+
+        return view('admin.booking.update')->with('data', $data);
     }
 
     /**
@@ -106,7 +108,18 @@ class BookingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $booking = Booking::findOrFail($id);
+
+        $request->validate([
+            'user_id' => "required|numeric",
+            'schedule_id' => 'required|numeric',
+            'status' => 'required|numeric',
+            'order_date' => 'required',
+        ]);
+
+        $booking->update($request->all());
+
+        return redirect(route('booking.index'));
     }
 
     /**
@@ -117,6 +130,8 @@ class BookingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Booking::find($id)->delete();
+
+        return redirect(route('booking.index'));
     }
 }

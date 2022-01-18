@@ -28,7 +28,8 @@
                     </span>
                 </div>
             </td>
-            <td>{{ App\Models\Category::find( $value->category_id)->name }}</td>
+            <td>{{ App\Models\Category::find($value->category_id)->name }}</td>
+            {{-- <td> {{ App\Models\Category::find($value->category_id) }} </td> --}}
             <td>{{ $value->name }}</td>
             <td>@currency($value->price)</td>
             <td>{{ $value->stock }}</td>
@@ -50,7 +51,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link deleteButton" onclick="deleteFunction({{ $value->id }})">
+                                <a href="/admin/product/delete/{{ $value->id }}" class="nav-link deleteButton"
+                                    onclick="deleteFunction({{ $value->id }})">
                                     <i class="nav-icon la la-trash"></i>
                                     <span class="nav-text">Delete</span>
                                 </a>

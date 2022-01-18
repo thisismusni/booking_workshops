@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @push('title_page')
-{{ trans('panel.category') }}
+{{-- {{ trans('panel.category') }} --}}
+Kategori
 @endpush
 @push('sub_title_page')
 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
@@ -17,7 +18,8 @@
 @section('content')
 <div class="card card-custom example example-compact">
     <div class="card-header">
-        <h3 class="card-title">{{ trans('crud.create') }} {{ trans('panel.category') }}</h3>
+        {{-- <h3 class="card-title">{{ trans('crud.create') }} {{ trans('panel.category') }}</h3> --}}
+        <h3 class="card-title">Update Kategori</h3>
         <div class="card-toolbar">
             <a href="{{ route('category.index') }}" class="btn btn-light-primary font-weight-bolder mr-2">
                 <i class="ki ki-long-arrow-back icon-xs"></i>Back</a>

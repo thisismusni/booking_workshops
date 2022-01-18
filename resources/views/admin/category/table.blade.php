@@ -11,8 +11,8 @@
     <tbody>
         @foreach ($data as $category)
         <tr>
-            <td>{{ $category->id  }}</td>
-            <td>{{ $category->name  }}</td>
+            <td>{{ $category->id }}</td>
+            <td>{{ $category->name }}</td>
             <td>{{ $category->status == 1 ? 'Publish' : 'Draft' }}</td>
             <td>{{ $category->description }}</td>
             <td>
@@ -29,12 +29,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <form id="formDelete[{{ $category->id }}]" method="POST"
+                                {{-- <form id="formDelete[{{ $category->id }}]" method="GET"
                                     action="{{ route('category.destroy', $category->id  ) }}">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $category->id }}">
-                                </form>
-                                <a class="nav-link deleteButton" onclick="deleteFunction({{ $category->id }})">
+                                </form> --}}
+                                <a href="/admin/category/delete/{{ $category->id }}" class="nav-link deleteButton"
+                                    onclick="deleteFunction({{ $category->id }})">
                                     <i class="nav-icon la la-trash"></i>
                                     <span class="nav-text">Delete</span>
                                 </a>
