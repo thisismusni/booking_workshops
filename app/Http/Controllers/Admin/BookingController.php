@@ -57,14 +57,16 @@ class BookingController extends Controller
         // dd($dataBook);
         if (is_null($dataBook)) {
             $book = Booking::create($dataRecord);
-            foreach ($dataRecord['product'] as $product_id) {
-                $product = Product::find($product_id);
-                $BookingProduct = new BookingProduct;
-                $BookingProduct->product_id = $product->id;
-                $BookingProduct->booking_id = $book->id;
-                $BookingProduct->product_name = $product->name;
-                $BookingProduct->price = $product->price;
-                $BookingProduct->save();
+            if (isset($dataRecord['product'])) {
+                foreach ($dataRecord['product'] as $product_id) {
+                    $product = Product::find($product_id);
+                    $BookingProduct = new BookingProduct;
+                    $BookingProduct->product_id = $product->id;
+                    $BookingProduct->booking_id = $book->id;
+                    $BookingProduct->product_name = $product->name;
+                    $BookingProduct->price = $product->price;
+                    $BookingProduct->save();
+                }
             }
         } else {
             return back();

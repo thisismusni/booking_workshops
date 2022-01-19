@@ -31,6 +31,7 @@
                             <li class="nav-item">
                                 {{-- <form id="formDelete[{{ $category->id }}]" method="GET"
                                     action="{{ route('category.destroy', $category->id  ) }}">
+                                    @method("DELETE")
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $category->id }}">
                                 </form> --}}
