@@ -41,7 +41,7 @@
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                         <ul class="nav nav-hoverable flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="/admin/booking/edit/{{ $booking->id }}">
                                     <i class="nav-icon la la-edit"></i>
                                     <span class="nav-text">Edit</span>
                                 </a>

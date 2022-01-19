@@ -79,6 +79,7 @@ Route::prefix('admin')->group(function () {
 
     //Schedule
     Route::resource('schedule', App\Http\Controllers\Admin\ScheduleController::class);
+    // Route::get('/schedule/store', [App\Http\Controllers\Admin\ScheduleController::class, 'store'])->name('admin.schedule.store');
     Route::get('/schedule/edit/{id}', [App\Http\Controllers\Admin\ScheduleController::class, 'edit'])->name('admin.schedule.edit');
     Route::get('/schedule/update/{id}', [App\Http\Controllers\Admin\ScheduleController::class, 'update'])->name('admin.schedule.update');
     Route::get('/schedule/delete/{id}', [App\Http\Controllers\Admin\ScheduleController::class, 'destroy'])->name('admin.schedule.delete');
