@@ -18,7 +18,7 @@
                 @php
                 $no = 1;
                 @endphp
-                @foreach ($data as $value)
+                @foreach ($products as $value)
                 <tr>
                     <td>{{ $no++}}</td>
                     <td>

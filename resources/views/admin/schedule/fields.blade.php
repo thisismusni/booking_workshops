@@ -1,3 +1,4 @@
+@csrf
 <input type="hidden" name="status" id="status" value="1">
 
 <div class="form-group row">

@@ -31,8 +31,9 @@ class BookingController extends Controller
     public function create()
     {
         $data = Product::where('status', 1)->get();
+        $products = Product::orderBy('created_at', 'DESC')->get();
 
-        return view('admin.booking.create')->with('data', $data);
+        return view('admin.booking.create')->with('data', $data)->with('products', $products);;
     }
 
     /**
@@ -96,9 +97,11 @@ class BookingController extends Controller
      */
     public function edit($id)
     {
-        $data = Bookings::where('id', $id)->first();
+        $data = Booking::where('id', $id)->first();
+        // dd($data);
+        $products = Product::orderBy('created_at', 'DESC')->get();
 
-        return view('admin.booking.update')->with('data', $data);
+        return view('admin.booking.update')->with('data', $data)->with('products', $products);
     }
 
     /**
@@ -118,8 +121,14 @@ class BookingController extends Controller
             'status' => 'required|numeric',
             'order_date' => 'required',
         ]);
+        $dataRecord = $request->all();
+        $order_date = date_create($dataRecord['order_date']);
+        $dataRecord['order_date'] = date('Y-m-d H:i:s', strtotime($dataRecord['order_date']));
 
-        $booking->update($request->all());
+        $dataBook = Booking::where('status', '!=', '3')->where('schedule_id', $dataRecord['schedule_id'])->whereDate('order_date', $order_date)->first();
+
+
+        $booking->update($dataRecord);
 
         return redirect(route('booking.index'));
     }

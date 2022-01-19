@@ -43,11 +43,10 @@ class ScheduleController extends Controller
             'start' => 'required',
             'end' => 'required',
         ]);
-        $data = $request->all();
 
-        Product::create($data);
+        Schedule::create($request->all());
 
-        return redirect(route('admin.schedule.index'));
+        return redirect(route('schedule.index'));
     }
 
     /**

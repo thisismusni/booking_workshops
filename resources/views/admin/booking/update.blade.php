@@ -2,7 +2,7 @@
 
 @push('subheader')
 @push('title_page')
-User
+Booking
 @endpush
 @push('sub_title_page')
 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
@@ -21,10 +21,10 @@ User
         <h3 class="card-title">Update User</h3>
     </div>
     <!--begin::Form-->
-    <form action="{{ route('admin.user.update',$data->id) }}" method="post" enctype="multipart/form-data" class="form"
-        id="kt_form">
+    <form action="{{ route('admin.booking.update',$data->id) }}" method="post" enctype="multipart/form-data"
+        class="form" id="kt_form">
         <div class="card-body">
-            @include('admin.user.fields')
+            @include('admin.booking.fields')
         </div>
         <div class="card-footer">
             <div class="row">

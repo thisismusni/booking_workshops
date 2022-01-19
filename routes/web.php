@@ -66,14 +66,14 @@ Route::prefix('admin')->group(function () {
     //Booking
     Route::resource('booking', App\Http\Controllers\Admin\BookingController::class);
     Route::get('/booking/edit/{id}', [App\Http\Controllers\Admin\BookingController::class, 'edit'])->name('admin.booking.edit');
-    Route::get('/booking/update/{id}', [App\Http\Controllers\Admin\BookingController::class, 'update'])->name('admin.booking.update');
+    Route::post('/booking/update/{id}', [App\Http\Controllers\Admin\BookingController::class, 'update'])->name('admin.booking.update');
     Route::get('/booking/delete/{id}', [App\Http\Controllers\Admin\BookingController::class, 'destroy'])->name('admin.booking.delete');
 
 
     //Category
     Route::resource('category', App\Http\Controllers\Admin\CategoryController::class);
     Route::get('/category/edit/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('admin.category.edit');
-    Route::get('/category/update/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('admin.category.update');
+    Route::post('/category/update/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('admin.category.update');
     Route::get('/category/delete/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('admin.category.delete');
 
 

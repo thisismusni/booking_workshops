@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         $data = Product::orderBy('created_at', 'DESC')->get();
-
+        // dd($data);
         return view('admin.product.index')->with('data', $data);
     }
 
@@ -132,7 +132,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
 
-        Product::find($id)->delete();
+        // Product::find($id)->delete();
+        $data = Product::findOrFail($id);
+        $data->delete();
 
         return redirect(route('product.index'));
     }
