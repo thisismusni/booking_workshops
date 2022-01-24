@@ -1,7 +1,6 @@
 @extends('layouts.user.app')
 
 @section('content')
-
 <!-- Page Content -->
 <section id="page-content">
     <div class="container">
@@ -71,7 +70,7 @@
             </div>  
             <div class="col-lg-2 col-md-2 col-sm-6 col-6 pt-2">   
             <br>
-                <a href="javascript:;" onclick="deleteBtn(${i})" class="btn font-weight-bolder btn-danger mt-2">
+                <a href="javascript:" onclick="deleteBtn(${i})" class="btn btn-danger mt-2">
                     <i class="fa fa-trash"></i>
                 </a>
             </div>
@@ -86,6 +85,12 @@
         
         document.getElementById("example-date-input").value = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     });
+
+    function deleteBtn(id){
+        let myobj = `row[${id}]`
+        myobj = document.getElementById(myobj);
+        myobj.remove();
+    }
     
     async function dateChange() {
 

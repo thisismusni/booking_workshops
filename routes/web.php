@@ -17,6 +17,8 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/schedule/{date}', [App\Http\Controllers\HomeController::class, 'schedule'])->name('schedule');
+Route::get('/guestproduct', [App\Http\Controllers\ProductController::class, 'index'])->name('guestproduct');
+
 
 
 Route::group(['middleware' => ['role:pimpinan', 'auth'], 'prefix' => 'pimpinan'], function () {

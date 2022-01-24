@@ -7,9 +7,9 @@
             <!--begin::Header Menu-->
             <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                 <!--begin::Header Nav-->
-                <form class="d-flex flex-center rounded w-400px">
+                {{-- <form class="d-flex flex-center rounded w-400px">
                     <input type="text" class="form-control border-0 font-weight-bold pl-2 " placeholder="Search ">
-                </form>
+                </form> --}}
                 <!--end::Header Nav-->
             </div>
             <!--end::Header Menu-->

@@ -24,7 +24,7 @@ Category
         </div>
         <div class="card-toolbar">
             <!--begin::Dropdown-->
-            <div class="dropdown dropdown-inline mr-2">
+            {{-- <div class="dropdown dropdown-inline mr-2">
                 <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="la la-download"></i>Export</button>
@@ -66,7 +66,7 @@ Category
                     </ul>
                 </div>
                 <!--end::Dropdown Menu-->
-            </div>
+            </div> --}}
             <!--end::Dropdown-->
             <!--begin::Button-->
             <a href="{{ route('category.create') }}" class="btn btn-primary font-weight-bolder">

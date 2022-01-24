@@ -39,8 +39,12 @@
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $schedule->id }}">
                                 </form> --}}
-                                <a href="/admin/schedule/delete/{{ $schedule->id }}" class="nav-link deleteButton"
+                                {{-- <a href="/admin/schedule/delete/{{ $schedule->id }}" class="nav-link deleteButton"
                                     onclick="deleteFunction({{ $schedule->id }})">
+                                    <i class="nav-icon la la-trash"></i>
+                                    <span class="nav-text">Delete</span>
+                                </a> --}}
+                                <a href="/admin/schedule/delete/{{ $schedule->id }}" class="button delete-confirm">
                                     <i class="nav-icon la la-trash"></i>
                                     <span class="nav-text">Delete</span>
                                 </a>
@@ -62,3 +66,25 @@
         </tr>
     </tfoot>
 </table>
+
+@push('page_script')
+{{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+    $('.delete-confirm').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This record and it`s details will be permanantly deleted!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+</script>
+
+@endpush

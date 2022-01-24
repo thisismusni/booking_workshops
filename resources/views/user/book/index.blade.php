@@ -37,6 +37,8 @@
                                             Done
                                             @elseif ($booking->status == 4)
                                             Cancel
+                                            @elseif ($booking->status == 5)
+                                            di Setujui
                                             @endif
                                         </td>
                                         <td>

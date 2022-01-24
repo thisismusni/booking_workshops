@@ -17,89 +17,45 @@
             <!--begin::Actions-->
             @stack('tools')
 
-            <a href="#" class="btn btn-bg-white btn-icon-info btn-hover-primary btn-icon mr-3 my-2 my-lg-0">
-                <i class="flaticon2-file icon-md"></i>
-            </a>
-            <a href="#" class="btn btn-bg-white btn-icon-danger btn-hover-primary btn-icon mr-3 my-2 my-lg-0">
-                <i class="flaticon-download-1 icon-md"></i>
-            </a>
-            <a href="#" class="btn btn-bg-white btn-icon-success btn-hover-primary btn-icon mr-3 my-2 my-lg-0">
-                <i class="flaticon2-fax icon-md"></i>
-            </a>
-            <a href="#" class="btn btn-bg-white btn-icon-warning btn-hover-primary btn-icon mr-3 my-2 my-lg-0">
-                <i class="flaticon2-settings icon-md"></i>
-            </a>
-            <!--end::Actions-->
-            <!--begin::Dropdown-->
-            <div class="dropdown dropdown-inline my-2 my-lg-0" data-toggle="tooltip" title="Quick actions"
-                data-placement="left">
+            @php
+            $x = App\Models\Booking::where('status', 1)->count();
+            $y = App\Models\Booking::where('status', 1)->get();
+            @endphp
+
+            <div class="dropdown dropdown-inline my-2 my-lg-0 position-relative" data-toggle="tooltip"
+                title="Daftar Booking" data-placement="left">
                 <a href="#" class="btn btn-primary btn-icon" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <span class="svg-icon svg-icon-md">
-                        <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-2.svg-->
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                            height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <path
-                                    d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z"
-                                    fill="#000000" />
-                            </g>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-bell" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
                         </svg>
-                        <!--end::Svg Icon-->
+                    </span>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {{ $x }}
                     </span>
                 </a>
                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-                    <!--begin::Navigation-->
                     <ul class="navi navi-hover">
                         <li class="navi-header font-weight-bold py-4">
-                            <span class="font-size-lg">Choose Label:</span>
-                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
-                                data-placement="right" title="Click to learn more..."></i>
+                            <span class="font-size-lg">Daftar Booking :</span>
+                            <i class="icon-md text-muted" data-toggle="tooltip" data-placement="right">{{ $x }}</i>
                         </li>
                         <li class="navi-separator mb-3 opacity-70"></li>
+                        @foreach ($y as $y)
                         <li class="navi-item">
-                            <a href="#" class="navi-link">
+                            <a href="/admin/booking/edit/{{ $y->id }}" class="navi-link">
                                 <span class="navi-text">
-                                    <span class="label label-xl label-inline label-light-success">Customer</span>
+                                    <span class="label label-xl label-inline label-light-success">
+                                        {{ $y->user->email }}
+                                    </span>
                                 </span>
                             </a>
                         </li>
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-                                <span class="navi-text">
-                                    <span class="label label-xl label-inline label-light-danger">Partner</span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-                                <span class="navi-text">
-                                    <span class="label label-xl label-inline label-light-warning">Suplier</span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-                                <span class="navi-text">
-                                    <span class="label label-xl label-inline label-light-primary">Member</span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-                                <span class="navi-text">
-                                    <span class="label label-xl label-inline label-light-dark">Staff</span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="navi-separator mt-3 opacity-70"></li>
-                        <li class="navi-footer py-4">
-                            <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                <i class="ki ki-plus icon-sm"></i>Add new</a>
-                        </li>
+                        @endforeach
                     </ul>
-                    <!--end::Navigation-->
                 </div>
             </div>
             <!--end::Dropdown-->

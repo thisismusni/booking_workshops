@@ -24,8 +24,10 @@
                 <span class="label label-warning label-inline mr-2">Process</span>
                 @elseif($booking->status == 3)
                 <span class="label label-info label-inline mr-2">Finished</span>
-                @else
+                @elseif($booking->status == 4)
                 <span class="label label-danger label-inline mr-2">Cancaled</span>
+                @else
+                <span class="label label-primary label-inline mr-2">di Setujui</span>
                 @endif
             </td>
             <td>{{ date('Y-m-d', strtotime($booking->order_date)) }}</td>

@@ -2,7 +2,7 @@
     <!--begin::Header-->
     <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
         <h3 class="font-weight-bold m-0">User Profile
-            <small class="text-muted font-size-sm ml-2">12 messages</small>
+            {{-- <small class="text-muted font-size-sm ml-2">12 messages</small> --}}
         </h3>
         <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
             <i class="ki ki-close icon-xs text-muted"></i>
@@ -16,13 +16,13 @@
             <div class="symbol symbol-100 mr-5">
                 <div class="symbol-label" style="background-image:url({{ asset('media/users/300_21.jpg') }})">
                 </div>
-                <i class="symbol-badge bg-success"></i>
+                {{-- <i class="symbol-badge bg-success"></i> --}}
             </div>
             <div class="d-flex flex-column">
                 <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-                    {{-- {{ Auth::user()->name }} --}}
+                    {{ Auth::user()->name }}
                 </a>
-                <div class="text-muted mt-1">Application Developer</div>
+                {{-- <div class="text-muted mt-1">Application Developer</div> --}}
                 <div class="navi mt-2">
                     <a href="#" class="navi-item">
                         <span class="navi-link p-0 pb-2">
@@ -64,7 +64,7 @@
         <div class="separator separator-dashed mt-8 mb-5"></div>
         <!--end::Separator-->
         <!--begin::Nav-->
-        <div class="navi navi-spacer-x-0 p-0">
+        {{-- <div class="navi navi-spacer-x-0 p-0">
             <!--begin::Item-->
             <a href="custom/apps/user/profile-1/personal-information.html" class="navi-item">
                 <div class="navi-link">
@@ -187,13 +187,13 @@
                 </div>
             </a>
             <!--end:Item-->
-        </div>
+        </div> --}}
         <!--end::Nav-->
         <!--begin::Separator-->
-        <div class="separator separator-dashed my-7"></div>
+        {{-- <div class="separator separator-dashed my-7"></div> --}}
         <!--end::Separator-->
         <!--begin::Notifications-->
-        <div>
+        {{-- <div>
             <!--begin:Heading-->
             <h5 class="mb-5">Recent Notifications</h5>
             <!--end:Heading-->
@@ -320,7 +320,7 @@
                 <span class="font-weight-bolder text-info py-1 font-size-lg">+8%</span>
             </div>
             <!--end::Item-->
-        </div>
+        </div> --}}
         <!--end::Notifications-->
     </div>
     <!--end::Content-->

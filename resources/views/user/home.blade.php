@@ -44,7 +44,7 @@
 <script>
     function menuClick(params) {
         if ("product" == params) {
-            window.location.href = "{{ route('user.product')}}";  
+            window.location.href = "{{ route('guestproduct')}}";  
         } else if("book" == params){
             window.location.href = "{{ route('book')}}";  
         } else if("history" == params){

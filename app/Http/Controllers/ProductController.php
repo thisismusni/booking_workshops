@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $data = Product::where('status', 1)->get();
+        return view("user.product.index")->with('data', $data);
     }
 
     /**
