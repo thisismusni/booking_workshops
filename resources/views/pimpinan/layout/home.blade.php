@@ -52,10 +52,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta property="og:image"
         content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
 
-    {{--
-    <meta name="description" --}} {{--
-        content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
-    --}}
+    {{-- <meta name="description" --}} {{-- content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." /> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
     <!--begin::Fonts-->
@@ -64,7 +61,8 @@ License: You must have a valid license purchased only from themeforest(the above
     {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 
     <!--begin::Page Vendors Styles(used by this page)-->
-    <link href="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.css') }} " rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.css') }} " rel="stylesheet"
+        type="text/css" />
     <!--end::Page Vendors Styles-->
     <!--begin::Global Theme Styles(used by all pages)-->
     <link href="{{ asset('plugins/global/plugins.bundle.css') }} " rel="stylesheet" type="text/css" />
@@ -81,10 +79,12 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="icon" sizes="48x48" href="https://sejawat.co.id/images/sejawat-logo-mobile.png">
     <link rel="icon" sizes="96x96" href="https://sejawat.co.id/images/sejawat-logo-mobile.png">
     <link rel="icon" sizes="144x144" href="https://sejawat.co.id/images/sejawat-logo-mobile.png">
+    @laravelPWA
     <style>
         .deleteButton:hover {
             cursor: pointer;
         }
+
     </style>
     @stack('page_style')
 </head>
@@ -164,66 +164,123 @@ License: You must have a valid license purchased only from themeforest(the above
     </script>
     <!--begin::Global Config(global config for global JS scripts)-->
     <script>
-        var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };
+        var KTAppSettings = {
+            "breakpoints": {
+                "sm": 576,
+                "md": 768,
+                "lg": 992,
+                "xl": 1200,
+                "xxl": 1400
+            },
+            "colors": {
+                "theme": {
+                    "base": {
+                        "white": "#ffffff",
+                        "primary": "#3699FF",
+                        "secondary": "#E5EAEE",
+                        "success": "#1BC5BD",
+                        "info": "#8950FC",
+                        "warning": "#FFA800",
+                        "danger": "#F64E60",
+                        "light": "#E4E6EF",
+                        "dark": "#181C32"
+                    },
+                    "light": {
+                        "white": "#ffffff",
+                        "primary": "#E1F0FF",
+                        "secondary": "#EBEDF3",
+                        "success": "#C9F7F5",
+                        "info": "#EEE5FF",
+                        "warning": "#FFF4DE",
+                        "danger": "#FFE2E5",
+                        "light": "#F3F6F9",
+                        "dark": "#D6D6E0"
+                    },
+                    "inverse": {
+                        "white": "#ffffff",
+                        "primary": "#ffffff",
+                        "secondary": "#3F4254",
+                        "success": "#ffffff",
+                        "info": "#ffffff",
+                        "warning": "#ffffff",
+                        "danger": "#ffffff",
+                        "light": "#464E5F",
+                        "dark": "#ffffff"
+                    }
+                },
+                "gray": {
+                    "gray-100": "#F3F6F9",
+                    "gray-200": "#EBEDF3",
+                    "gray-300": "#E4E6EF",
+                    "gray-400": "#D1D3E0",
+                    "gray-500": "#B5B5C3",
+                    "gray-600": "#7E8299",
+                    "gray-700": "#5E6278",
+                    "gray-800": "#3F4254",
+                    "gray-900": "#181C32"
+                }
+            },
+            "font-family": "Poppins"
+        };
     </script>
     <!--end::Global Config-->
     <!--begin::Global Theme Bundle(used by all pages)-->
-    <script src="{{ asset('plugins/global/plugins.bundle.js')}}"></script>
-    <script src="{{ asset('plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
-    <script src="{{ asset('js/scripts.bundle.js')}}"></script>
+    <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
+    <script src="{{ asset('js/scripts.bundle.js') }}"></script>
     <!--end::Global Theme Bundle-->
     <!--begin::Page Vendors(used by this page)-->
-    <script src="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"></script>
+    <script src="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     <!--end::Page Vendors-->
     <!--begin::Page Scripts(used by this page)-->
-    <script src="{{ asset('js/pages/widgets.js')}}"></script>
+    <script src="{{ asset('js/pages/widgets.js') }}"></script>
     <!--end::Page Scripts-->
     @stack('page_script')
     <script src="{{ asset('js/pages/features/miscellaneous/sweetalert2.js') }}"></script>
     @if ($message = Session::get('sukses'))
-    <script>
-        Swal.fire({
-            position: "top-right",
-            icon: "success",
-            title: "{{ $message }}",
-            showConfirmButton: false,
-            timer: 2000
-        });
-    </script>
-    {{ Session::forget('sukses') }}
+        <script>
+            Swal.fire({
+                position: "top-right",
+                icon: "success",
+                title: "{{ $message }}",
+                showConfirmButton: false,
+                timer: 2000
+            });
+        </script>
+        {{ Session::forget('sukses') }}
     @endif
 
     @if ($message = Session::get('error'))
 
-    <script>
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-right",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        };
-        
-        toastr.error("{{ $message }}");
-        // Swal.fire({
-        //     position: "top-right",
-        //     icon: "error",
-        //     title: "{{ $message }}",
-        //     showConfirmButton: false,
-        //     timer: 2000
-        // });
-    </script>
-    {{ Session::forget('error') }}
+        <script>
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            toastr.error("{{ $message }}");
+            // Swal.fire({
+            //     position: "top-right",
+            //     icon: "error",
+            //     title: "{{ $message }}",
+            //     showConfirmButton: false,
+            //     timer: 2000
+            // });
+        </script>
+        {{ Session::forget('error') }}
     @endif
     <script>
         function deleteFunction(id) {
@@ -241,7 +298,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 }
             }).then(function(result) {
                 if (result.value) {
-                    document.getElementById("formDelete["+id+"]").submit(); 
+                    document.getElementById("formDelete[" + id + "]").submit();
                 } else if (result.dismiss === "cancel") {
                     Swal.fire(
                         "Cancelled",
@@ -251,7 +308,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 }
             });
         }
-
     </script>
 </body>
 <!--end::Body-->
