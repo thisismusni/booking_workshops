@@ -3,15 +3,14 @@
         <div class="container">
             <!--Logo-->
             <div id="logo">
-                {{-- <a href="{{ route('home') }}"> --}}
-                    <a onclick="Javascript:history.back()">
-                        <span class="logo-default">
-                            <img height="90" src="{{ asset('BW.png') }}">
-                        </span>
-                        <span class="logo-dark">
-                            <img height="90" src="{{ asset('BW.png') }}">
-                        </span>
-                    </a>
+                <a href="{{ url('/') }}">
+                    <span class="logo-default">
+                        <img height="90" src="{{ asset('BW.png') }}">
+                    </span>
+                    <span class="logo-dark">
+                        <img height="90" src="{{ asset('BW.png') }}">
+                    </span>
+                </a>
             </div>
             <!--End: Logo-->
 
@@ -31,9 +30,9 @@
                                     <input placeholder="Email" name="email" value="{{ old('email') }}"
                                         class="form-control @error('email') is-invalid @enderror" type="text">
                                     @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                                 <div class="form-group m-b-5">
@@ -42,9 +41,9 @@
                                         class="form-control @error('password') is-invalid @enderror" type="password"
                                         name="password" required>
                                     @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                                 {{-- <div class="form-group form-inline text-left m-b-10 ">
@@ -79,21 +78,22 @@
                     <nav>
                         <ul class="text-center sm-m-t-50">
                             @guest
-                            <li>
-                                <button href="#modalLogin" data-lightbox="inline"
-                                    class="btn btn-rounded btn-primary btn-modal">LOGIN</button>
-                            </li>
+                                <li>
+                                    <a href="{{ url('/login') }}">
+                                        <button class="btn btn-rounded btn-primary">LOGIN</button>
+                                    </a>
+                                </li>
                             @else
-                            <li>
-                                <a href="" class=" btn btn-rounded btn-danger text-center"
-                                    style="color: white; font-weight: 600;font-size: 14px;"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Log out
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                </form>
-                            </li>
+                                <li>
+                                    <a href="" class=" btn btn-rounded btn-danger text-center"
+                                        style="color: white; font-weight: 600;font-size: 14px;"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Log out
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                    </form>
+                                </li>
                             @endguest
                         </ul>
                     </nav>
