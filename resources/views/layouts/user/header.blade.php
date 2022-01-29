@@ -15,7 +15,7 @@
             <!--End: Logo-->
 
             <!-- Modal -->
-            <div id="modalLogin" class="modal no-padding" data-delay="3000" style="max-width: 780px;">
+            {{-- <div id="modalLogin" class="modal no-padding" data-delay="3000" style="max-width: 780px;">
                 <div class="row">
                     <div class="col-md-6 no-padding"
                         style="background: transparent url(user-template/images/login-bg.jpg) no-repeat scroll center top / cover; height:470px;">
@@ -46,11 +46,6 @@
                                         </span>
                                     @enderror
                                 </div>
-                                {{-- <div class="form-group form-inline text-left m-b-10 ">
-                                    <a class="right" href="resetpassword.html">
-                                        <p><small>Lost your Password? Reset</small></p>
-                                    </a>
-                                </div> --}}
                                 <div class="text-left form-group mt-3">
                                     <button type="submit" class="btn btn-rounded btn-primary mt-3"
                                         type="button">Login</button>
@@ -63,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--end: Modal -->
 
             <!--Navigation Resposnive Trigger-->
