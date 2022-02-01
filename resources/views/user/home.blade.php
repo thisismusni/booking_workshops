@@ -1,6 +1,7 @@
 @extends('layouts._app')
 
 @push('page_style')
+    @include('layouts.user.css')
     <style>
         .card:hover {
             cursor: pointer;
@@ -29,6 +30,9 @@
 @endsection
 
 @push('page_script')
+
+    @include('layouts.user.js')
+
     <script>
         function menuClick(params) {
             if ("product" == params) {

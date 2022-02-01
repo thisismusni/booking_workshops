@@ -8,9 +8,14 @@ use App\Models\BookingProduct;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use SebastianBergmann\Type\ObjectType;
 
 class BookingController extends Controller
 {
+    public function __construct()
+    {
+        $this->user_id = null;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +24,6 @@ class BookingController extends Controller
     public function index()
     {
         $data = Booking::orderBy('updated_at', 'DESC')->get();
-        // dd($data);
         return view('admin.booking.index')->with('data', $data);
     }
 
@@ -30,7 +34,8 @@ class BookingController extends Controller
      */
     public function create()
     {
-        $data = Product::where('status', 1)->get();
+        // $data = Product::where('status', 1)->get();
+        $data = null;
         $products = Product::orderBy('created_at', 'DESC')->get();
 
         return view('admin.booking.create')->with('data', $data)->with('products', $products);;

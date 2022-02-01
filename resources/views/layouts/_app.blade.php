@@ -4,38 +4,26 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="INSPIRO" />
-    {{-- <link rel="icon" type="image/png" href="{{ asset('BW.png') }}"> --}}
+    <link rel="icon" type="image/png" href="{{ asset('BW.png') }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Document title -->
-    <title> @stack('tap_title') {{ config('app.name', 'Laravel') }}</title>
+    <title> @stack('tap_title') {{ config('app.name', 'Marannu Mobil') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    @laravelPWA
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 
-    <!-- Stylesheets & Fonts -->
-    <link href="{{ asset('user-template/css/plugins.css') }}" rel="stylesheet">
-    <link href="{{ asset('user-template/css/style.css') }}" rel="stylesheet">
+    @laravelPWA
 
     @stack('page_style')
 
 </head>
 
-<body>
+<body id="kt_body"
+    class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+
 
     @yield('content')
 
-    <!-- end: Body Inner -->
-    <!-- Scroll top -->
-    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
-    @auth
-        @include('layouts.firebase_script')
-    @endauth
-    <!--Plugins-->
-    <script src="{{ asset('user-template/js/jquery.js') }}"></script>
-    <script src="{{ asset('user-template/js/plugins.js') }}"></script>
-    <!--Template functions-->
-    <script src="{{ asset('user-template/js/functions.js') }}"></script>
     @stack('page_script')
 
 </body>

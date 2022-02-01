@@ -1,5 +1,9 @@
 @extends('layouts._app')
 
+@push('page_style')
+    @include('layouts.user.css')
+@endpush
+
 @section('content')
     @include('sweetalert::alert')
 
@@ -69,5 +73,8 @@
         <!-- end: Footer -->
     </div>
 
-
 @endsection
+
+@push('page_script')
+    @include('layouts.user.js')
+@endpush
