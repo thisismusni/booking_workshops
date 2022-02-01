@@ -48,7 +48,7 @@
                                         </li>
                                         <li class="nav-item">
                                             <a href="/admin/user/delete/{{ $user->id }}"
-                                                class="nav-link deleteButton"
+                                                class="nav-link deleteButton button delete-confirm"
                                                 onclick="deleteFunction({{ $user->id }})">
                                                 <i class="nav-icon la la-trash"></i>
                                                 <span class="nav-text">Delete</span>

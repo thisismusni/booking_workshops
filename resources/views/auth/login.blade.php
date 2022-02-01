@@ -72,11 +72,11 @@
                                                 {{ __('Login') }}
                                             </button>
 
-                                            @if (Route::has('password.request'))
+                                            {{-- @if (Route::has('password.request'))
                                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                                     {{ __('Forgot Your Password?') }}
                                                 </a>
-                                            @endif
+                                            @endif --}}
                                         </div>
                                     </div>
                                 </form>
@@ -92,8 +92,31 @@
         <!-- end: Footer -->
     </div>
 
-
-
-
-
 @endsection
+
+@push('page_style')
+    @include('layouts.user.css')
+    <style>
+        .card:hover {
+            cursor: pointer;
+        }
+
+    </style>
+@endpush
+
+@push('page_script')
+
+    @include('layouts.user.js')
+
+    <script>
+        function menuClick(params) {
+            if ("product" == params) {
+                window.location.href = "{{ route('guestproduct') }}";
+            } else if ("book" == params) {
+                window.location.href = "{{ route('book') }}";
+            } else if ("history" == params) {
+                window.location.href = "{{ route('user.history') }}";
+            }
+        }
+    </script>
+@endpush

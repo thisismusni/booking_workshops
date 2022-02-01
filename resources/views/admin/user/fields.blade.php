@@ -50,13 +50,16 @@
                 <option></option>
                 @foreach (App\Models\Role::all() as $item)
                     @if ($item->name == 'user')
-                        <option @phpif (isset($data)) {
+                        @php
+                            if (isset($data)) {
                                 foreach (App\Models\User::find($data->id)->getRoleNames() as $role) {
                                     if ($role == $item->name) {
                                         echo 'selected';
                                     }
                                 }
-                        } @endphp value="{{ $item->id }}">
+                            }
+                        @endphp
+                        <option value="{{ $item->id }}">
                             {{ $item->name }}
                         </option>
                     @endif

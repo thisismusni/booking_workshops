@@ -102,5 +102,31 @@
         <!-- end: Footer -->
     </div>
 
-
 @endsection
+
+@push('page_style')
+    @include('layouts.user.css')
+    <style>
+        .card:hover {
+            cursor: pointer;
+        }
+
+    </style>
+@endpush
+
+@push('page_script')
+
+    @include('layouts.user.js')
+
+    <script>
+        function menuClick(params) {
+            if ("product" == params) {
+                window.location.href = "{{ route('guestproduct') }}";
+            } else if ("book" == params) {
+                window.location.href = "{{ route('book') }}";
+            } else if ("history" == params) {
+                window.location.href = "{{ route('user.history') }}";
+            }
+        }
+    </script>
+@endpush

@@ -15,7 +15,9 @@
     booking
 @endpush
 
-@section('content')@include('layouts.admin.mobile_header')
+@section('content')
+
+    @include('layouts.admin.mobile_header')
 
     <div class="d-flex flex-column flex-root">
         <div class="d-flex flex-row flex-column-fluid page">
