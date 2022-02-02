@@ -96,7 +96,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <!--begin::Main-->
     <!--begin::Header Mobile-->
-    @include('layouts.mobile_header')
+    @include('layouts.admin.mobile_header')
     <!--end::Header Mobile-->
     <div class="d-flex flex-column flex-root">
         <!--begin::Page-->
@@ -123,11 +123,11 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <!--end::Entry-->
                 </div>
-                @include('layouts.footer')
+                @include('layouts.admin.footer')
 
             </div>
 
-            @include('layouts.profile')
+            @include('layouts.admin.profile')
             <!--end::Wrapper-->
         </div>
         <!--end::Page-->
